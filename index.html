@@ -171,8 +171,15 @@ tr:hover td{background:var(--surface2)}
     <div id="addForm-tournaments" style="display:none;margin-bottom:16px">
       <div class="form-grid">
         <div class="field f-full"><label>Tournament Name</label><input id="trn-name" placeholder="Woodchuck Invitational"></div>
-        <div class="field"><label>Location</label><select id="trn-loc"><option value="">Select...</option><option value="Unknown">Unknown</option></select></div>
-        <div class="field"><label>Season</label><select id="trn-season"><option>2021-22</option><option>2021-22 Off-Season</option><option>2022-23</option><option>2022-23 Off-Season</option><option>2023-24</option><option>2023-24 Off-Season</option><option selected>2024-25</option><option>2024-25 Off-Season</option><option>2025-26</option><option>2025-26 Off-Season</option><option>2026-27</option><option>2026-27 Off-Season</option></select></div>
+        <div class="field"><label>Location</label><select id="trn-loc"><option value="">Select location...</option><option value="Unknown">Unknown</option></select></div>
+        <div class="field"><label>Season</label><select id="trn-season">
+          <option>2021-22</option><option>2021-22 Off-Season</option>
+          <option>2022-23</option><option>2022-23 Off-Season</option>
+          <option>2023-24</option><option>2023-24 Off-Season</option>
+          <option selected>2024-25</option><option>2024-25 Off-Season</option>
+          <option>2025-26</option><option>2025-26 Off-Season</option>
+          <option>2026-27</option><option>2026-27 Off-Season</option>
+        </select></div>
       </div>
       <div class="form-actions"><button class="btn btn-acc btn-sm" onclick="addTournament()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleForm('tournaments')">Cancel</button></div>
     </div>
@@ -213,7 +220,14 @@ tr:hover td{background:var(--surface2)}
     <div class="modal-title" id="modalTitle">Log a Match</div>
     <div class="form-grid">
       <div class="field"><label>Date</label><input type="date" id="m-date"></div>
-      <div class="field"><label>Season</label><select id="m-season"><option>2021-22</option><option>2021-22 Off-Season</option><option>2022-23</option><option>2022-23 Off-Season</option><option>2023-24</option><option>2023-24 Off-Season</option><option selected>2024-25</option><option>2024-25 Off-Season</option><option>2025-26</option><option>2025-26 Off-Season</option><option>2026-27</option><option>2026-27 Off-Season</option></select></div>
+      <div class="field"><label>Season</label><select id="m-season">
+        <option>2021-22</option><option>2021-22 Off-Season</option>
+        <option>2022-23</option><option>2022-23 Off-Season</option>
+        <option>2023-24</option><option>2023-24 Off-Season</option>
+        <option selected>2024-25</option><option>2024-25 Off-Season</option>
+        <option>2025-26</option><option>2025-26 Off-Season</option>
+        <option>2026-27</option><option>2026-27 Off-Season</option>
+      </select></div>
       <div class="field"><label>Athlete</label><select id="m-athlete"><option value="">Select...</option><option value="unknown">Unknown</option></select></div>
       <div class="field"><label>Event Type</label><select id="m-event"><option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option></select></div>
       <div class="field"><label>Location</label><select id="m-location"><option value="">Select...</option><option value="unknown">Unknown</option></select></div>
@@ -286,9 +300,9 @@ function setStats(ms){
   [s.total,s.wins,s.losses,s.pct+'%',s.pins,s.tech].forEach(function(v,i){var el=document.getElementById(ids[i]);if(el)el.textContent=v;});
 }
 
-function aN(id){var a=D.athletes.find(function(x){return x.id===id;});return a?a.name:'';}
-function lN(id){var a=D.locations.find(function(x){return x.id===id;});return a?a.name:'';}
-function tN(id){var a=D.tournaments.find(function(x){return x.id===id;});return a?a.name:'';}
+function aN(id){var a=D.athletes.find(function(x){return x.id===id;});return a?a.name:(id==='unknown'?'Unknown':'');}
+function lN(id){var a=D.locations.find(function(x){return x.id===id;});return a?a.name:(id==='unknown'?'Unknown':'');}
+function tN(id){var a=D.tournaments.find(function(x){return x.id===id;});return a?a.name:(id==='unknown'?'Unknown':'');}
 
 function mcHTML(m,acts){
   var win=m.result==='Win';
@@ -449,7 +463,7 @@ async function addTournament(){
   var n=document.getElementById('trn-name').value.trim();if(!n){toast('Name is required.',true);return;}
   var r=await sb.from('tournaments').insert({name:n,location:document.getElementById('trn-loc').value||null,season:document.getElementById('trn-season').value||null});
   if(r.error){toast(r.error.message,true);return;}
-  toast('Added.');['trn-name'].forEach(function(id){document.getElementById(id).value='';});toggleForm('tournaments');await loadAll();
+  toast('Added.');document.getElementById('trn-name').value='';toggleForm('tournaments');await loadAll();
 }
 async function deleteTournament(id){if(!confirm('Remove?'))return;var r=await sb.from('tournaments').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Removed.');await loadAll();}
 
