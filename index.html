@@ -287,7 +287,7 @@ td.act{width:1%;white-space:nowrap;vertical-align:middle}
     <div class="filter-bar">
       <select id="r-athlete" onchange="renderReports()"><option value="">All Athletes</option></select>
       <select id="r-season" onchange="renderReports()"><option value="">All Seasons</option></select>
-      <select id="r-level" onchange="renderReports()"><option value="">All Levels</option><option>Varsity</option><option>JV</option></select>
+      <select id="r-level" onchange="renderReports()"><option value="">All Levels</option><option>Varsity</option><option>JV</option><option>Off-Season</option></select>
       <select id="r-event" onchange="renderReports()"><option value="">All Events</option><option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option></select>
     </div>
     <div class="stats-strip" style="margin-bottom:14px">
@@ -341,7 +341,7 @@ td.act{width:1%;white-space:nowrap;vertical-align:middle}
       <div class="field"><label>Weight Class</label>
         <select id="m-weight"><option>106</option><option>113</option><option>120</option><option>126</option><option>132</option><option>138</option><option>145</option><option selected>152</option><option>160</option><option>170</option><option>182</option><option>195</option><option>220</option><option>285</option></select>
       </div>
-      <div class="field"><label>Level</label><select id="m-level"><option>Varsity</option><option>JV</option></select></div>
+      <div class="field"><label>Level</label><select id="m-level"><option>Varsity</option><option>JV</option><option>Off-Season</option></select></div>
       <div class="field" id="winWrap"><label>Win By</label>
         <select id="m-wintype"><option>Decision</option><option>Major Decision</option><option>Technical Fall</option><option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option></select>
       </div>
@@ -559,7 +559,7 @@ function buildBulkVal(tab){
   if(!field){wrap.innerHTML='';return;}
   var h='<label>New Value:</label>';
   if(field==='season')h+='<select id="bvv-'+tab+'">'+SEAS.map(function(s){return'<option>'+s+'</option>';}).join('')+'</select>';
-  else if(field==='level')h+='<select id="bvv-'+tab+'"><option>Varsity</option><option>JV</option></select>';
+  else if(field==='level')h+='<select id="bvv-'+tab+'"><option>Varsity</option><option>JV</option><option>Off-Season</option></select>';
   else if(field==='event_type')h+='<select id="bvv-'+tab+'"><option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option></select>';
   else if(field==='result')h+='<select id="bvv-'+tab+'"><option>Win</option><option>Loss</option></select>';
   else if(field==='weight_class')h+='<select id="bvv-'+tab+'"><option>106</option><option>113</option><option>120</option><option>126</option><option>132</option><option>138</option><option>145</option><option>152</option><option>160</option><option>170</option><option>182</option><option>195</option><option>220</option><option>285</option></select>';
