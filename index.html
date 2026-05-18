@@ -68,6 +68,9 @@ th{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;te
 td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
 tr:hover td{background:var(--surface2)}
 tr.sel td{background:rgba(232,184,75,.05)}
+/* action cells - no stretch */
+td.act{width:1%;white-space:nowrap;vertical-align:middle}
+.act-btns{display:inline-flex;gap:4px;align-items:center}
 .bdg{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
 .b-win{background:rgba(46,204,113,.15);color:var(--win)}.b-loss{background:rgba(231,76,60,.15);color:var(--loss)}
 .b-v{background:rgba(232,184,75,.15);color:var(--accent)}.b-jv{background:rgba(106,117,133,.2);color:var(--muted)}
@@ -413,6 +416,8 @@ function tN(id){var a=D.tournaments.find(function(x){return x.id===id;});return 
 function latestSeas(){if(!D.tournaments.length)return'2024-25';var s=D.tournaments.slice().sort(function(a,b){return(b.created_at||'').localeCompare(a.created_at||'');});return s[0].season||'2024-25';}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;');}
 
+function actCell(btns){return'<td class="act"><div class="act-btns">'+btns+'</div></td>';}
+
 function mcH(m,acts){
   var win=m.result==='Win',tn=tN(m.tournament_id),ln=lN(m.location_id);
   var cb=bmode.matches?'<input type="checkbox" '+(sel.matches.has(m.id)?'checked':'')+' onchange="tSel(\'matches\',\''+m.id+'\',this.checked)" style="margin-right:4px">':'';
@@ -444,7 +449,8 @@ function rMatches(){
       '<td><span class="bdg '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td>'+
       '<td>'+(m.score||'')+'</td>'+
       '<td style="font-size:.78rem;color:var(--muted);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(m.notes||'')+'</td>'+
-      '<td style="display:flex;gap:4px;white-space:nowrap"><button class="btn btn-edit btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delMatch(\''+m.id+'\')">Del</button></td></tr>';
+      actCell('<button class="btn btn-edit btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delMatch(\''+m.id+'\')">Del</button>')+
+      '</tr>';
   }).join('');
 }
 
@@ -461,7 +467,8 @@ function rAthletes(){
   tb.innerHTML=D.athletes.map(function(i){
     var chk='<td class="cb">'+(bmode.athletes?'<input type="checkbox" '+(sel.athletes.has(i.id)?'checked':'')+' onchange="tSel(\'athletes\',\''+i.id+'\',this.checked)">':'')+'</td>';
     return'<tr class="'+(sel.athletes.has(i.id)?'sel':'')+'">'+chk+'<td>'+esc(i.name||'')+'</td><td>'+(i.grad_year||'')+'</td><td>'+esc(i.school||'')+'</td>'+
-      '<td style="display:flex;gap:4px"><button class="btn btn-edit btn-sm" onclick="openEdit(\'athletes\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delAthlete(\''+i.id+'\')">Del</button></td></tr>';
+      actCell('<button class="btn btn-edit btn-sm" onclick="openEdit(\'athletes\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delAthlete(\''+i.id+'\')">Del</button>')+
+      '</tr>';
   }).join('');
 }
 
@@ -478,7 +485,8 @@ function rLocations(){
   tb.innerHTML=D.locations.map(function(i){
     var chk='<td class="cb">'+(bmode.locations?'<input type="checkbox" '+(sel.locations.has(i.id)?'checked':'')+' onchange="tSel(\'locations\',\''+i.id+'\',this.checked)">':'')+'</td>';
     return'<tr class="'+(sel.locations.has(i.id)?'sel':'')+'">'+chk+'<td>'+esc(i.name||'')+'</td><td>'+esc(i.town||'')+'</td><td>'+esc(i.state||'')+'</td><td>'+(i.is_school?'Yes':'')+'</td>'+
-      '<td style="display:flex;gap:4px"><button class="btn btn-edit btn-sm" onclick="openEdit(\'locations\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delLocation(\''+i.id+'\')">Del</button></td></tr>';
+      actCell('<button class="btn btn-edit btn-sm" onclick="openEdit(\'locations\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delLocation(\''+i.id+'\')">Del</button>')+
+      '</tr>';
   }).join('');
 }
 
@@ -495,7 +503,8 @@ function rTournaments(){
   tb.innerHTML=D.tournaments.map(function(i){
     var chk='<td class="cb">'+(bmode.tournaments?'<input type="checkbox" '+(sel.tournaments.has(i.id)?'checked':'')+' onchange="tSel(\'tournaments\',\''+i.id+'\',this.checked)">':'')+'</td>';
     return'<tr class="'+(sel.tournaments.has(i.id)?'sel':'')+'">'+chk+'<td>'+esc(i.name||'')+'</td><td>'+esc(i.location||'')+'</td><td>'+esc(i.season||'')+'</td>'+
-      '<td style="display:flex;gap:4px"><button class="btn btn-edit btn-sm" onclick="openEdit(\'tournaments\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delTournament(\''+i.id+'\')">Del</button></td></tr>';
+      actCell('<button class="btn btn-edit btn-sm" onclick="openEdit(\'tournaments\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delTournament(\''+i.id+'\')">Del</button>')+
+      '</tr>';
   }).join('');
 }
 
