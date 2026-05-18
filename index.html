@@ -17,8 +17,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif
 .header h1 span{color:var(--accent)}
 .header-sub{color:var(--muted);font-size:.75rem;margin-top:3px;letter-spacing:.1em;text-transform:uppercase}
 .badge{font-size:.7rem;padding:4px 10px;border-radius:20px;border:1px solid var(--border);color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.badge.ok{border-color:var(--win);color:var(--win)}
-.badge.err{border-color:var(--loss);color:var(--loss)}
+.badge.ok{border-color:var(--win);color:var(--win)}.badge.err{border-color:var(--loss);color:var(--loss)}
 .stats-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:12px 14px}
 .stat-val{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:900;line-height:1;color:var(--accent)}
@@ -30,26 +29,37 @@ html,body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif
 .tab{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;background:none;border:none;color:var(--muted);cursor:pointer;position:relative;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .tab.active{color:var(--accent)}
 .tab.active::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--accent)}
-.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap}
 .sec-hdr h2{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.hdr-btns{display:flex;gap:6px;flex-wrap:wrap}
 .btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:9px 18px;border-radius:5px;border:none;cursor:pointer;font-size:.9rem;transition:opacity .15s;-webkit-tap-highlight-color:transparent}
 .btn:active{opacity:.7}
 .btn-acc{background:var(--accent);color:#0a0c0f}
 .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--label)}
 .btn-del{background:transparent;border:1px solid var(--loss);color:var(--loss)}
+.btn-edit{background:transparent;border:1px solid var(--accent);color:var(--accent)}
 .btn-sm{padding:6px 12px;font-size:.78rem}
+.btn-bulk{background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;padding:6px 12px;border-radius:5px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn-bulk.on{border-color:var(--accent);color:var(--accent)}
+.bulk-bar{background:var(--surface2);border:1px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:14px;display:none;align-items:center;gap:10px;flex-wrap:wrap}
+.bulk-bar.show{display:flex}
+.bulk-info{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;color:var(--accent);white-space:nowrap}
+.bulk-bar select,.bulk-bar input{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:4px;font-family:'Barlow',sans-serif;font-size:.85rem;-webkit-appearance:none;appearance:none}
+.bulk-field{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.bulk-field label{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--label);white-space:nowrap}
+.cb{width:36px;text-align:center;padding-left:10px}
+input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;-webkit-appearance:checkbox;appearance:checkbox;vertical-align:middle}
 .match-cards{display:flex;flex-direction:column;gap:10px}
-.match-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px}
+.match-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;transition:border-color .15s}
+.match-card.sel{border-color:var(--accent)}
 .mc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
 .mc-result{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:900;line-height:1}
 .mc-result.win{color:var(--win)}.mc-result.loss{color:var(--loss)}
 .mc-meta{font-size:.78rem;color:var(--muted);margin-top:3px}
-.mc-acts{display:flex;gap:6px;flex-shrink:0}
+.mc-acts{display:flex;gap:6px;flex-shrink:0;align-items:center}
 .chips{display:flex;flex-wrap:wrap;gap:5px}
 .chip{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
-.c-v{background:rgba(232,184,75,.15);color:var(--accent)}
-.c-jv{background:rgba(106,117,133,.2);color:var(--muted)}
-.c-n{background:var(--surface2);color:var(--label)}
+.c-v{background:rgba(232,184,75,.15);color:var(--accent)}.c-jv{background:rgba(106,117,133,.2);color:var(--muted)}.c-n{background:var(--surface2);color:var(--label)}
 .mc-notes{font-size:.78rem;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
 .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{width:100%;border-collapse:collapse;font-size:.86rem}
@@ -57,28 +67,28 @@ thead tr{border-bottom:2px solid var(--border)}
 th{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:left;padding:8px 10px;white-space:nowrap}
 td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
 tr:hover td{background:var(--surface2)}
+tr.sel td{background:rgba(232,184,75,.05)}
 .bdg{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
-.b-win{background:rgba(46,204,113,.15);color:var(--win)}
-.b-loss{background:rgba(231,76,60,.15);color:var(--loss)}
-.b-v{background:rgba(232,184,75,.15);color:var(--accent)}
-.b-jv{background:rgba(106,117,133,.2);color:var(--muted)}
+.b-win{background:rgba(46,204,113,.15);color:var(--win)}.b-loss{background:rgba(231,76,60,.15);color:var(--loss)}
+.b-v{background:rgba(232,184,75,.15);color:var(--accent)}.b-jv{background:rgba(106,117,133,.2);color:var(--muted)}
 .empty{text-align:center;padding:40px;color:var(--muted);font-style:italic}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .f-full{grid-column:1/-1}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--label)}
 .field input:not([type=checkbox]),.field select,.field textarea{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:5px;font-family:'Barlow',sans-serif;font-size:1rem;width:100%;-webkit-appearance:none;appearance:none}
-.field input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;margin:0;-webkit-appearance:checkbox;appearance:checkbox}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field input:not([type=checkbox]):focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
 .field select option{background:var(--surface2)}
 .field textarea{resize:vertical;min-height:76px}
 .form-actions{display:flex;gap:10px;margin-top:16px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:14px}
 .list-items{display:flex;flex-direction:column;gap:8px}
-.list-item{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.list-item{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:12px 14px;display:flex;align-items:center;gap:8px;transition:border-color .15s}
+.list-item.sel{border-color:var(--accent)}
 .li-info{flex:1;min-width:0}
 .li-name{font-weight:600;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .li-sub{font-size:.78rem;color:var(--muted);margin-top:2px}
+.li-acts{display:flex;gap:5px;flex-shrink:0;margin-left:auto}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);display:flex;align-items:flex-end;justify-content:center;z-index:100}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:14px 14px 0 0;padding:20px 16px 40px;width:100%;max-width:700px;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .modal-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
@@ -89,23 +99,13 @@ tr:hover td{background:var(--surface2)}
 .filter-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
 .filter-bar select{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:5px;font-family:'Barlow',sans-serif;font-size:.88rem;width:100%;-webkit-appearance:none;appearance:none}
 .pane{display:none}.pane.active{display:block}
-
-/* Result toggle buttons */
 .result-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
 .result-btn{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:.06em;text-transform:uppercase;padding:16px;border-radius:8px;border:2px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center}
-.result-btn:active{opacity:.8}
-.result-btn.win-active{background:rgba(46,204,113,.15);border-color:var(--win);color:var(--win)}
-.result-btn.loss-active{background:rgba(231,76,60,.15);border-color:var(--loss);color:var(--loss)}
-
-/* Checkbox field */
+.result-btn.win-on{background:rgba(46,204,113,.15);border-color:var(--win);color:var(--win)}
+.result-btn.loss-on{background:rgba(231,76,60,.15);border-color:var(--loss);color:var(--loss)}
 .check-field{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;cursor:pointer}
-.check-field input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
+.check-field input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;margin:0;-webkit-appearance:checkbox;appearance:checkbox}
 .check-field span{font-size:.88rem;color:var(--label)}
-
-/* Datalist combo */
-.combo-wrap{position:relative}
-.combo-wrap input{width:100%}
-
 @media(min-width:700px){
   .stats-strip{grid-template-columns:repeat(6,1fr)}
   .header h1{font-size:2.6rem}
@@ -114,8 +114,7 @@ tr:hover td{background:var(--surface2)}
   .modal-handle{display:none}
   .form-grid{grid-template-columns:1fr 1fr 1fr}
   .filter-bar{grid-template-columns:repeat(4,1fr)}
-  .mob{display:none!important}
-  .dsk{display:block!important}
+  .mob{display:none!important}.dsk{display:block!important}
 }
 @media(max-width:699px){.mob{display:block}.dsk{display:none!important}}
 </style>
@@ -147,17 +146,52 @@ tr:hover td{background:var(--surface2)}
   <div id="pane-matches" class="pane active">
     <div class="sec-hdr">
       <h2>Match Log <span id="matchCount" style="color:var(--muted);font-size:.85rem;font-weight:400"></span></h2>
-      <button class="btn btn-acc btn-sm" onclick="openMatchModal()">+ Add Match</button>
+      <div class="hdr-btns">
+        <button class="btn-bulk" id="bb-matches" onclick="toggleBulk('matches')">Bulk Edit</button>
+        <button class="btn btn-acc btn-sm" onclick="openMatchModal()">+ Add Match</button>
+      </div>
+    </div>
+    <div class="bulk-bar" id="bar-matches">
+      <span class="bulk-info"><span id="bc-matches">0</span> selected</span>
+      <button class="btn btn-ghost btn-sm" onclick="selAll('matches')">All</button>
+      <button class="btn btn-ghost btn-sm" onclick="selNone('matches')">None</button>
+      <div class="bulk-field"><label>Field:</label>
+        <select id="bf-matches" onchange="buildBulkVal('matches')">
+          <option value="">-- pick --</option>
+          <option value="season">Season</option><option value="athlete_id">Athlete</option>
+          <option value="level">Level</option><option value="event_type">Event Type</option>
+          <option value="weight_class">Weight Class</option><option value="result">Result</option>
+        </select>
+      </div>
+      <div class="bulk-field" id="bv-matches"></div>
+      <button class="btn btn-acc btn-sm" onclick="applyBulk('matches')">Apply</button>
+      <button class="btn btn-del btn-sm" onclick="bulkDel('matches')">Delete</button>
     </div>
     <div class="match-cards mob" id="matchCards"><div class="empty">Loading...</div></div>
     <div class="dsk tbl-wrap"><table>
-      <thead><tr><th>Date</th><th>Athlete</th><th>Season</th><th>Event</th><th>Location</th><th>Wt</th><th>Level</th><th>Opp School</th><th>Result</th><th>Score</th><th>Notes</th><th></th></tr></thead>
-      <tbody id="matchesTbody"><tr><td colspan="12" class="empty">Loading...</td></tr></tbody>
+      <thead><tr><th class="cb"><input type="checkbox" id="sa-matches" onchange="saToggle('matches',this.checked)"></th><th>Date</th><th>Athlete</th><th>Season</th><th>Event</th><th>Location</th><th>Wt</th><th>Level</th><th>Opp School</th><th>Result</th><th>Score</th><th>Notes</th><th></th></tr></thead>
+      <tbody id="matchesTbody"></tbody>
     </table></div>
   </div>
 
   <div id="pane-athletes" class="pane"><div class="card">
-    <div class="sec-hdr"><h2>Athletes</h2><button class="btn btn-acc btn-sm" onclick="toggleForm('athletes')">+ Add</button></div>
+    <div class="sec-hdr"><h2>Athletes</h2><div class="hdr-btns">
+      <button class="btn-bulk" id="bb-athletes" onclick="toggleBulk('athletes')">Bulk Edit</button>
+      <button class="btn btn-acc btn-sm" onclick="toggleForm('athletes')">+ Add</button>
+    </div></div>
+    <div class="bulk-bar" id="bar-athletes">
+      <span class="bulk-info"><span id="bc-athletes">0</span> selected</span>
+      <button class="btn btn-ghost btn-sm" onclick="selAll('athletes')">All</button>
+      <button class="btn btn-ghost btn-sm" onclick="selNone('athletes')">None</button>
+      <div class="bulk-field"><label>Field:</label>
+        <select id="bf-athletes" onchange="buildBulkVal('athletes')">
+          <option value="">-- pick --</option><option value="school">School</option><option value="grad_year">Grad Year</option>
+        </select>
+      </div>
+      <div class="bulk-field" id="bv-athletes"></div>
+      <button class="btn btn-acc btn-sm" onclick="applyBulk('athletes')">Apply</button>
+      <button class="btn btn-del btn-sm" onclick="bulkDel('athletes')">Delete</button>
+    </div>
     <div id="addForm-athletes" style="display:none;margin-bottom:16px">
       <div class="form-grid">
         <div class="field f-full"><label>Name</label><input id="ath-name" placeholder="Noah Bouchett"></div>
@@ -167,52 +201,83 @@ tr:hover td{background:var(--surface2)}
       <div class="form-actions"><button class="btn btn-acc btn-sm" onclick="addAthlete()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleForm('athletes')">Cancel</button></div>
     </div>
     <div class="list-items mob" id="athletesMob"></div>
-    <div class="dsk tbl-wrap"><table><thead><tr><th>Name</th><th>Grad Year</th><th>School</th><th></th></tr></thead><tbody id="athletesTbody"><tr><td colspan="4" class="empty">Loading...</td></tr></tbody></table></div>
+    <div class="dsk tbl-wrap"><table>
+      <thead><tr><th class="cb"><input type="checkbox" id="sa-athletes" onchange="saToggle('athletes',this.checked)"></th><th>Name</th><th>Grad Year</th><th>School</th><th></th></tr></thead>
+      <tbody id="athletesTbody"></tbody>
+    </table></div>
   </div></div>
 
   <div id="pane-locations" class="pane"><div class="card">
-    <div class="sec-hdr"><h2>Locations</h2><button class="btn btn-acc btn-sm" onclick="toggleForm('locations')">+ Add</button></div>
+    <div class="sec-hdr"><h2>Locations</h2><div class="hdr-btns">
+      <button class="btn-bulk" id="bb-locations" onclick="toggleBulk('locations')">Bulk Edit</button>
+      <button class="btn btn-acc btn-sm" onclick="toggleForm('locations')">+ Add</button>
+    </div></div>
+    <div class="bulk-bar" id="bar-locations">
+      <span class="bulk-info"><span id="bc-locations">0</span> selected</span>
+      <button class="btn btn-ghost btn-sm" onclick="selAll('locations')">All</button>
+      <button class="btn btn-ghost btn-sm" onclick="selNone('locations')">None</button>
+      <div class="bulk-field"><label>Field:</label>
+        <select id="bf-locations" onchange="buildBulkVal('locations')">
+          <option value="">-- pick --</option><option value="is_school">Mark as School</option><option value="state">State</option><option value="town">Town</option>
+        </select>
+      </div>
+      <div class="bulk-field" id="bv-locations"></div>
+      <button class="btn btn-acc btn-sm" onclick="applyBulk('locations')">Apply</button>
+      <button class="btn btn-del btn-sm" onclick="bulkDel('locations')">Delete</button>
+    </div>
     <div id="addForm-locations" style="display:none;margin-bottom:16px">
       <div class="form-grid">
-        <div class="field f-full"><label>School / Venue Name</label><input id="loc-name" placeholder="Stowe High School"></div>
+        <div class="field f-full"><label>Name</label><input id="loc-name" placeholder="Stowe High School"></div>
         <div class="field"><label>Town</label><input id="loc-town" placeholder="Stowe"></div>
         <div class="field"><label>State</label><input id="loc-state" placeholder="VT"></div>
-        <div class="field f-full">
-          <label class="check-field">
-            <input type="checkbox" id="loc-is-school" checked>
-            <span>This is a school (show as opponent school option)</span>
-          </label>
-        </div>
+        <div class="field f-full"><label class="check-field"><input type="checkbox" id="loc-is-school" checked><span>This is a school</span></label></div>
       </div>
       <div class="form-actions"><button class="btn btn-acc btn-sm" onclick="addLocation()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleForm('locations')">Cancel</button></div>
     </div>
     <div class="list-items mob" id="locationsMob"></div>
-    <div class="dsk tbl-wrap"><table><thead><tr><th>Name</th><th>Town</th><th>State</th><th>School</th><th></th></tr></thead><tbody id="locationsTbody"><tr><td colspan="5" class="empty">Loading...</td></tr></tbody></table></div>
+    <div class="dsk tbl-wrap"><table>
+      <thead><tr><th class="cb"><input type="checkbox" id="sa-locations" onchange="saToggle('locations',this.checked)"></th><th>Name</th><th>Town</th><th>State</th><th>School</th><th></th></tr></thead>
+      <tbody id="locationsTbody"></tbody>
+    </table></div>
   </div></div>
 
   <div id="pane-tournaments" class="pane"><div class="card">
-    <div class="sec-hdr"><h2>Tournaments</h2><button class="btn btn-acc btn-sm" onclick="toggleForm('tournaments')">+ Add</button></div>
+    <div class="sec-hdr"><h2>Tournaments</h2><div class="hdr-btns">
+      <button class="btn-bulk" id="bb-tournaments" onclick="toggleBulk('tournaments')">Bulk Edit</button>
+      <button class="btn btn-acc btn-sm" onclick="toggleForm('tournaments')">+ Add</button>
+    </div></div>
+    <div class="bulk-bar" id="bar-tournaments">
+      <span class="bulk-info"><span id="bc-tournaments">0</span> selected</span>
+      <button class="btn btn-ghost btn-sm" onclick="selAll('tournaments')">All</button>
+      <button class="btn btn-ghost btn-sm" onclick="selNone('tournaments')">None</button>
+      <div class="bulk-field"><label>Field:</label>
+        <select id="bf-tournaments" onchange="buildBulkVal('tournaments')">
+          <option value="">-- pick --</option><option value="season">Season</option><option value="location">Location</option>
+        </select>
+      </div>
+      <div class="bulk-field" id="bv-tournaments"></div>
+      <button class="btn btn-acc btn-sm" onclick="applyBulk('tournaments')">Apply</button>
+      <button class="btn btn-del btn-sm" onclick="bulkDel('tournaments')">Delete</button>
+    </div>
     <div id="addForm-tournaments" style="display:none;margin-bottom:16px">
       <div class="form-grid">
         <div class="field f-full"><label>Tournament Name</label><input id="trn-name" placeholder="Woodchuck Invitational"></div>
         <div class="field"><label>Location</label><select id="trn-loc"><option value="">Select location...</option><option value="Unknown">Unknown</option></select></div>
         <div class="field"><label>Season</label><select id="trn-season">
-          <option>2021-22</option><option>2021-22 Off-Season</option>
-          <option>2022-23</option><option>2022-23 Off-Season</option>
-          <option>2023-24</option><option>2023-24 Off-Season</option>
-          <option selected>2024-25</option><option>2024-25 Off-Season</option>
-          <option>2025-26</option><option>2025-26 Off-Season</option>
-          <option>2026-27</option><option>2026-27 Off-Season</option>
-          <option>2027-28</option><option>2027-28 Off-Season</option>
-          <option>2028-29</option><option>2028-29 Off-Season</option>
-          <option>2029-30</option><option>2029-30 Off-Season</option>
-          <option>2030-31</option><option>2030-31 Off-Season</option>
+          <option>2021-22</option><option>2021-22 Off-Season</option><option>2022-23</option><option>2022-23 Off-Season</option>
+          <option>2023-24</option><option>2023-24 Off-Season</option><option selected>2024-25</option><option>2024-25 Off-Season</option>
+          <option>2025-26</option><option>2025-26 Off-Season</option><option>2026-27</option><option>2026-27 Off-Season</option>
+          <option>2027-28</option><option>2027-28 Off-Season</option><option>2028-29</option><option>2028-29 Off-Season</option>
+          <option>2029-30</option><option>2029-30 Off-Season</option><option>2030-31</option><option>2030-31 Off-Season</option>
         </select></div>
       </div>
       <div class="form-actions"><button class="btn btn-acc btn-sm" onclick="addTournament()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleForm('tournaments')">Cancel</button></div>
     </div>
     <div class="list-items mob" id="tournamentsMob"></div>
-    <div class="dsk tbl-wrap"><table><thead><tr><th>Name</th><th>Location</th><th>Season</th><th></th></tr></thead><tbody id="tournamentsTbody"><tr><td colspan="4" class="empty">Loading...</td></tr></tbody></table></div>
+    <div class="dsk tbl-wrap"><table>
+      <thead><tr><th class="cb"><input type="checkbox" id="sa-tournaments" onchange="saToggle('tournaments',this.checked)"></th><th>Name</th><th>Location</th><th>Season</th><th></th></tr></thead>
+      <tbody id="tournamentsTbody"></tbody>
+    </table></div>
   </div></div>
 
   <div id="pane-reports" class="pane">
@@ -237,109 +302,56 @@ tr:hover td{background:var(--surface2)}
     <div class="card">
       <h2 style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:1.1rem;margin-bottom:12px">Match Log <span id="rMatchCount" style="color:var(--muted);font-size:.82rem;font-weight:400"></span></h2>
       <div class="match-cards mob" id="reportCards"></div>
-      <div class="dsk tbl-wrap"><table><thead><tr><th>Date</th><th>Athlete</th><th>Season</th><th>Event</th><th>Location</th><th>Wt</th><th>Level</th><th>Opp School</th><th>Result</th><th>Score</th><th>Notes</th></tr></thead><tbody id="reportTbody"><tr><td colspan="11" class="empty">No matches.</td></tr></tbody></table></div>
+      <div class="dsk tbl-wrap"><table><thead><tr><th>Date</th><th>Athlete</th><th>Season</th><th>Event</th><th>Location</th><th>Wt</th><th>Level</th><th>Opp School</th><th>Result</th><th>Score</th><th>Notes</th></tr></thead><tbody id="reportTbody"></tbody></table></div>
     </div>
   </div>
 </div>
 
-<!-- MATCH MODAL -->
 <div id="matchModal" class="overlay" style="display:none" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title" id="modalTitle">Log a Match</div>
-
-    <!-- Result buttons - big and prominent -->
     <div style="margin-bottom:18px">
       <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--label);margin-bottom:8px">Result</div>
       <div class="result-btns">
-        <button class="result-btn win-active" id="btn-win" onclick="setResult('Win')">Win</button>
+        <button class="result-btn win-on" id="btn-win" onclick="setResult('Win')">Win</button>
         <button class="result-btn" id="btn-loss" onclick="setResult('Loss')">Loss</button>
       </div>
     </div>
-
     <div class="form-grid">
       <div class="field"><label>Date</label><input type="date" id="m-date"></div>
       <div class="field"><label>Season</label><select id="m-season">
-        <option>2021-22</option><option>2021-22 Off-Season</option>
-        <option>2022-23</option><option>2022-23 Off-Season</option>
-        <option>2023-24</option><option>2023-24 Off-Season</option>
-        <option selected>2024-25</option><option>2024-25 Off-Season</option>
-        <option>2025-26</option><option>2025-26 Off-Season</option>
-        <option>2026-27</option><option>2026-27 Off-Season</option>
-        <option>2027-28</option><option>2027-28 Off-Season</option>
-        <option>2028-29</option><option>2028-29 Off-Season</option>
-        <option>2029-30</option><option>2029-30 Off-Season</option>
-        <option>2030-31</option><option>2030-31 Off-Season</option>
+        <option>2021-22</option><option>2021-22 Off-Season</option><option>2022-23</option><option>2022-23 Off-Season</option>
+        <option>2023-24</option><option>2023-24 Off-Season</option><option selected>2024-25</option><option>2024-25 Off-Season</option>
+        <option>2025-26</option><option>2025-26 Off-Season</option><option>2026-27</option><option>2026-27 Off-Season</option>
+        <option>2027-28</option><option>2027-28 Off-Season</option><option>2028-29</option><option>2028-29 Off-Season</option>
+        <option>2029-30</option><option>2029-30 Off-Season</option><option>2030-31</option><option>2030-31 Off-Season</option>
       </select></div>
-
-      <!-- Tournament dropdown - first so it can drive other fields -->
       <div class="field f-full"><label>Tournament / Event</label>
-        <select id="m-tournament" onchange="onTournamentChange()">
-          <option value="">Dual Meet</option>
-          <option value="unknown">Unknown</option>
-        </select>
+        <select id="m-tournament" onchange="onTrnChange()"><option value="">Dual Meet</option><option value="unknown">Unknown</option></select>
       </div>
-
-      <!-- Event type - auto-populated from tournament selection -->
       <div class="field"><label>Event Type</label>
-        <select id="m-event">
-          <option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option><option>Unknown</option>
-        </select>
+        <select id="m-event"><option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option><option>Unknown</option></select>
       </div>
-
-      <!-- Location - auto-populated from tournament selection -->
-      <div class="field"><label>Location</label>
-        <select id="m-location">
-          <option value="">Unknown</option>
-        </select>
-      </div>
-
-      <div class="field"><label>Athlete</label>
-        <select id="m-athlete">
-          <option value="">Unknown</option>
-        </select>
-      </div>
-
+      <div class="field"><label>Location</label><select id="m-location"><option value="">Unknown</option></select></div>
+      <div class="field"><label>Athlete</label><select id="m-athlete"><option value="">Unknown</option></select></div>
       <div class="field"><label>Weight Class</label>
-        <select id="m-weight">
-          <option>106</option><option>113</option><option>120</option><option>126</option><option>132</option>
-          <option>138</option><option>145</option><option selected>152</option><option>160</option><option>170</option>
-          <option>182</option><option>195</option><option>220</option><option>285</option>
-        </select>
+        <select id="m-weight"><option>106</option><option>113</option><option>120</option><option>126</option><option>132</option><option>138</option><option>145</option><option selected>152</option><option>160</option><option>170</option><option>182</option><option>195</option><option>220</option><option>285</option></select>
       </div>
-
-      <div class="field"><label>Level</label>
-        <select id="m-level"><option>Varsity</option><option>JV</option></select>
-      </div>
-
+      <div class="field"><label>Level</label><select id="m-level"><option>Varsity</option><option>JV</option></select></div>
       <div class="field" id="winWrap"><label>Win By</label>
-        <select id="m-wintype">
-          <option>Decision</option><option>Major Decision</option><option>Technical Fall</option>
-          <option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option>
-        </select>
+        <select id="m-wintype"><option>Decision</option><option>Major Decision</option><option>Technical Fall</option><option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option></select>
       </div>
       <div class="field" id="lossWrap" style="display:none"><label>Loss By</label>
-        <select id="m-losstype">
-          <option>Decision</option><option>Major Decision</option><option>Technical Fall</option>
-          <option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option>
-        </select>
+        <select id="m-losstype"><option>Decision</option><option>Major Decision</option><option>Technical Fall</option><option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option></select>
       </div>
-
       <div class="field"><label>Score (e.g. 8-3)</label><input id="m-score" placeholder="8-3"></div>
-
-      <!-- Opponent school - text with datalist suggestions from school locations -->
       <div class="field f-full"><label>Opponent School</label>
-        <div class="combo-wrap">
-          <input id="m-oppschool" list="school-list" placeholder="Type or select a school..." autocomplete="off">
-          <datalist id="school-list"></datalist>
-        </div>
+        <input id="m-oppschool" list="school-list" placeholder="Type or select a school..." autocomplete="off">
+        <datalist id="school-list"></datalist>
       </div>
-
-      <div class="field f-full"><label>Notes</label>
-        <textarea id="m-notes" placeholder="Takedowns, reversals, anything notable..."></textarea>
-      </div>
+      <div class="field f-full"><label>Notes</label><textarea id="m-notes" placeholder="Takedowns, reversals, anything notable..."></textarea></div>
     </div>
-
     <div class="form-actions">
       <button class="btn btn-acc" style="flex:1" onclick="saveMatch()">Save Match</button>
       <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
@@ -347,324 +359,320 @@ tr:hover td{background:var(--surface2)}
   </div>
 </div>
 
+<div id="editModal" class="overlay" style="display:none" onclick="if(event.target===this)closeEditModal()">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="editTitle">Edit</div>
+    <div id="editBody"></div>
+    <div class="form-actions">
+      <button class="btn btn-acc" style="flex:1" onclick="saveEdit()">Save</button>
+      <button class="btn btn-ghost" onclick="closeEditModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast" class="toast" style="display:none"></div>
 
 <script>
-const SB_URL='https://isftdinunhzwyjzsidde.supabase.co';
-const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlzZnRkaW51bmh6d3lqenNpZGRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwNTYyMzEsImV4cCI6MjA5NDYzMjIzMX0.uvQHYdUmr98LYv43qh2MOodqtEutWRGovXREIfXyMAo';
-const sb=supabase.createClient(SB_URL,SB_KEY);
+const SBU='https://isftdinunhzwyjzsidde.supabase.co';
+const SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlzZnRkaW51bmh6d3lqenNpZGRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkwNTYyMzEsImV4cCI6MjA5NDYzMjIzMX0.uvQHYdUmr98LYv43qh2MOodqtEutWRGovXREIfXyMAo';
+const sb=supabase.createClient(SBU,SBK);
 var D={matches:[],athletes:[],locations:[],tournaments:[]};
-var editId=null;
-var currentResult='Win';
+var editId=null,curResult='Win',editRec=null,editTbl=null;
+var bmode={matches:false,athletes:false,locations:false,tournaments:false};
+var sel={matches:new Set(),athletes:new Set(),locations:new Set(),tournaments:new Set()};
+var SEAS=['2021-22','2021-22 Off-Season','2022-23','2022-23 Off-Season','2023-24','2023-24 Off-Season','2024-25','2024-25 Off-Season','2025-26','2025-26 Off-Season','2026-27','2026-27 Off-Season','2027-28','2027-28 Off-Season','2028-29','2028-29 Off-Season','2029-30','2029-30 Off-Season','2030-31','2030-31 Off-Season'];
 
-window.onload=async function(){
-  document.getElementById('m-date').value=new Date().toISOString().split('T')[0];
-  await loadAll();
-};
+window.onload=async function(){document.getElementById('m-date').value=new Date().toISOString().split('T')[0];await loadAll();};
 
 async function loadAll(){
   try{
-    const[m,a,l,t]=await Promise.all([
-      sb.from('matches').select('*').order('date',{ascending:false}),
-      sb.from('athletes').select('*').order('name'),
-      sb.from('locations').select('*').order('name'),
-      sb.from('tournaments').select('*').order('name')
-    ]);
+    var r=await Promise.all([sb.from('matches').select('*').order('date',{ascending:false}),sb.from('athletes').select('*').order('name'),sb.from('locations').select('*').order('name'),sb.from('tournaments').select('*').order('name')]);
+    var m=r[0],a=r[1],l=r[2],t=r[3];
     if(m.error)throw m.error;
     D.matches=m.data||[];D.athletes=a.data||[];D.locations=l.data||[];D.tournaments=t.data||[];
     var b=document.getElementById('connBadge');b.textContent='Connected';b.className='badge ok';
     renderAll();
-  }catch(e){
-    var b=document.getElementById('connBadge');b.textContent='Error';b.className='badge err';
-    toast('DB error: '+e.message,true);
-  }
+  }catch(e){var b=document.getElementById('connBadge');b.textContent='Error';b.className='badge err';toast('DB: '+e.message,true);}
 }
 
 function renderAll(){
-  setStats(D.matches,'s-total','s-wins','s-losses','s-pct','s-pins','s-tech');
-  renderMatches();renderAthletes();renderLocations();renderTournaments();
-  fillReportFilters();renderReports();fillModalDrops();
+  doStats(D.matches,'s-total','s-wins','s-losses','s-pct','s-pins','s-tech');
+  rMatches();rAthletes();rLocations();rTournaments();fillRptFilters();renderReports();fillDrops();
 }
 
-function calcStats(ms){
-  var w=ms.filter(function(m){return m.result==='Win';}).length;
-  var l=ms.filter(function(m){return m.result==='Loss';}).length;
-  var p=ms.filter(function(m){return m.result==='Win'&&m.win_type==='Fall';}).length;
-  var t=ms.filter(function(m){return m.result==='Win'&&m.win_type==='Technical Fall';}).length;
+function cStats(ms){
+  var w=ms.filter(function(m){return m.result==='Win';}).length,l=ms.filter(function(m){return m.result==='Loss';}).length;
+  var p=ms.filter(function(m){return m.result==='Win'&&m.win_type==='Fall';}).length,t=ms.filter(function(m){return m.result==='Win'&&m.win_type==='Technical Fall';}).length;
   return{total:ms.length,wins:w,losses:l,pct:ms.length?Math.round(w/ms.length*100):0,pins:p,tech:t};
 }
-
-function setStats(ms){
-  var ids=Array.prototype.slice.call(arguments,1);
-  var s=calcStats(ms);
-  [s.total,s.wins,s.losses,s.pct+'%',s.pins,s.tech].forEach(function(v,i){var el=document.getElementById(ids[i]);if(el)el.textContent=v;});
-}
-
+function doStats(ms){var ids=Array.prototype.slice.call(arguments,1);var s=cStats(ms);[s.total,s.wins,s.losses,s.pct+'%',s.pins,s.tech].forEach(function(v,i){var el=document.getElementById(ids[i]);if(el)el.textContent=v;});}
 function aN(id){var a=D.athletes.find(function(x){return x.id===id;});return a?a.name:(id?'Unknown':'');}
 function lN(id){var a=D.locations.find(function(x){return x.id===id;});return a?a.name:(id?'Unknown':'');}
 function tN(id){var a=D.tournaments.find(function(x){return x.id===id;});return a?a.name:(id?'Unknown':'');}
+function latestSeas(){if(!D.tournaments.length)return'2024-25';var s=D.tournaments.slice().sort(function(a,b){return(b.created_at||'').localeCompare(a.created_at||'');});return s[0].season||'2024-25';}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;');}
 
-// Get most recently added tournament season
-function latestTournamentSeason(){
-  if(!D.tournaments.length) return '2024-25';
-  var sorted=D.tournaments.slice().sort(function(a,b){return(b.created_at||'').localeCompare(a.created_at||'');});
-  return sorted[0].season||'2024-25';
-}
-
-function mcHTML(m,acts){
-  var win=m.result==='Win';
-  var tn=tN(m.tournament_id);var ln=lN(m.location_id);
-  var ah=acts?('<div class="mc-acts"><button class="btn btn-ghost btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="deleteMatch(\''+m.id+'\')">Del</button></div>'):'';
-  return '<div class="match-card"><div class="mc-top"><div>'+
-    '<div class="mc-result '+(win?'win':'loss')+'">'+(win?'W':'L')+' \u2014 '+(win?(m.win_type||''):(m.loss_type||''))+'</div>'+
-    '<div class="mc-meta">'+(m.date||'')+' &bull; '+(m.opponent_school||'Unknown school')+'</div>'+
-    '</div>'+ah+'</div>'+
-    '<div class="chips">'+
-    '<span class="chip '+(m.level==='Varsity'?'c-v':'c-jv')+'">'+(m.level||'')+'</span>'+
-    '<span class="chip c-n">'+(m.weight_class||'')+' lbs</span>'+
-    '<span class="chip c-n">'+(m.event_type||'')+(tn?' / '+tn:'')+'</span>'+
-    (ln?'<span class="chip c-n">'+ln+'</span>':'')+
-    (m.score?'<span class="chip c-n">'+m.score+'</span>':'')+
-    '<span class="chip c-n">'+(m.season||'')+'</span>'+
-    '</div>'+(m.notes?'<div class="mc-notes">'+m.notes+'</div>':'')+
+function mcH(m,acts){
+  var win=m.result==='Win',tn=tN(m.tournament_id),ln=lN(m.location_id);
+  var cb=bmode.matches?'<input type="checkbox" '+(sel.matches.has(m.id)?'checked':'')+' onchange="tSel(\'matches\',\''+m.id+'\',this.checked)" style="margin-right:4px">':'';
+  var ah=acts?'<div class="mc-acts">'+cb+'<button class="btn btn-edit btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delMatch(\''+m.id+'\')">Del</button></div>':'';
+  return'<div class="match-card'+(sel.matches.has(m.id)?' sel':'')+'"><div class="mc-top"><div>'+
+    '<div class="mc-result '+(win?'win':'loss')+'">'+(win?'W':'L')+' \u2014 '+(win?m.win_type||'':m.loss_type||'')+'</div>'+
+    '<div class="mc-meta">'+(m.date||'')+' &bull; '+(m.opponent_school||'Unknown school')+'</div></div>'+ah+'</div>'+
+    '<div class="chips"><span class="chip '+(m.level==='Varsity'?'c-v':'c-jv')+'">'+(m.level||'')+'</span>'+
+    '<span class="chip c-n">'+(m.weight_class||'')+' lbs</span><span class="chip c-n">'+(m.event_type||'')+(tn?' / '+tn:'')+'</span>'+
+    (ln?'<span class="chip c-n">'+ln+'</span>':'')+(m.score?'<span class="chip c-n">'+m.score+'</span>':'')+
+    '<span class="chip c-n">'+(m.season||'')+'</span></div>'+(m.notes?'<div class="mc-notes">'+m.notes+'</div>':'')+
     '</div>';
 }
 
-function renderMatches(){
+function rMatches(){
   var s=D.matches.slice().sort(function(a,b){return(b.date||'').localeCompare(a.date||'');});
   document.getElementById('matchCount').textContent=s.length?'('+s.length+')':'';
-  document.getElementById('matchCards').innerHTML=s.length?s.map(function(m){return mcHTML(m,true);}).join(''):'<div class="empty">No matches yet. Add your first one!</div>';
+  document.getElementById('matchCards').innerHTML=s.length?s.map(function(m){return mcH(m,true);}).join(''):'<div class="empty">No matches yet.</div>';
   var tb=document.getElementById('matchesTbody');
-  if(!s.length){tb.innerHTML='<tr><td colspan="12" class="empty">No matches yet.</td></tr>';return;}
-  tb.innerHTML=s.map(function(m){return'<tr><td>'+(m.date||'')+'</td><td>'+aN(m.athlete_id)+'</td><td>'+(m.season||'')+'</td><td>'+(m.event_type||'')+(tN(m.tournament_id)?' / '+tN(m.tournament_id):'')+'</td><td>'+lN(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td><td><span class="bdg '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td><td>'+(m.opponent_school||'')+'</td><td><span class="bdg '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td><td>'+(m.score||'')+'</td><td style="font-size:.78rem;color:var(--muted);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(m.notes||'')+'</td><td style="display:flex;gap:5px"><button class="btn btn-ghost btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="deleteMatch(\''+m.id+'\')">Del</button></td></tr>';}).join('');
+  if(!s.length){tb.innerHTML='<tr><td colspan="13" class="empty">No matches yet.</td></tr>';return;}
+  tb.innerHTML=s.map(function(m){
+    var chk='<td class="cb">'+(bmode.matches?'<input type="checkbox" '+(sel.matches.has(m.id)?'checked':'')+' onchange="tSel(\'matches\',\''+m.id+'\',this.checked)">':'')+'</td>';
+    return'<tr class="'+(sel.matches.has(m.id)?'sel':'')+'">'+chk+
+      '<td>'+(m.date||'')+'</td><td>'+aN(m.athlete_id)+'</td><td>'+(m.season||'')+'</td>'+
+      '<td>'+(m.event_type||'')+(tN(m.tournament_id)?' / '+tN(m.tournament_id):'')+'</td>'+
+      '<td>'+lN(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td>'+
+      '<td><span class="bdg '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td>'+
+      '<td>'+(m.opponent_school||'')+'</td>'+
+      '<td><span class="bdg '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td>'+
+      '<td>'+(m.score||'')+'</td>'+
+      '<td style="font-size:.78rem;color:var(--muted);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(m.notes||'')+'</td>'+
+      '<td style="display:flex;gap:4px;white-space:nowrap"><button class="btn btn-edit btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delMatch(\''+m.id+'\')">Del</button></td></tr>';
+  }).join('');
 }
 
-function mobList(id,items,nFn,sFn,dFn){
-  var el=document.getElementById(id);
-  if(!items.length){el.innerHTML='<div class="empty">No entries yet.</div>';return;}
-  el.innerHTML=items.map(function(i){return'<div class="list-item"><div class="li-info"><div class="li-name">'+nFn(i)+'</div><div class="li-sub">'+sFn(i)+'</div></div><button class="btn btn-del btn-sm" onclick="'+dFn+'(\''+i.id+'\')">Remove</button></div>';}).join('');
+function rAthletes(){
+  var tb=document.getElementById('athletesTbody'),mob=document.getElementById('athletesMob');
+  if(!D.athletes.length){tb.innerHTML='<tr><td colspan="5" class="empty">No athletes yet.</td></tr>';mob.innerHTML='<div class="empty">No athletes yet.</div>';return;}
+  mob.innerHTML=D.athletes.map(function(i){
+    var cb=bmode.athletes?'<input type="checkbox" '+(sel.athletes.has(i.id)?'checked':'')+' onchange="tSel(\'athletes\',\''+i.id+'\',this.checked)">':'';
+    return'<div class="list-item'+(sel.athletes.has(i.id)?' sel':'')+'">'+
+      (bmode.athletes?'<div style="flex-shrink:0">'+cb+'</div>':'')+
+      '<div class="li-info"><div class="li-name">'+esc(i.name||'')+'</div><div class="li-sub">'+esc([i.grad_year,i.school].filter(Boolean).join(' \u00b7 '))+'</div></div>'+
+      '<div class="li-acts"><button class="btn btn-edit btn-sm" onclick="openEdit(\'athletes\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delAthlete(\''+i.id+'\')">Del</button></div></div>';
+  }).join('');
+  tb.innerHTML=D.athletes.map(function(i){
+    var chk='<td class="cb">'+(bmode.athletes?'<input type="checkbox" '+(sel.athletes.has(i.id)?'checked':'')+' onchange="tSel(\'athletes\',\''+i.id+'\',this.checked)">':'')+'</td>';
+    return'<tr class="'+(sel.athletes.has(i.id)?'sel':'')+'">'+chk+'<td>'+esc(i.name||'')+'</td><td>'+(i.grad_year||'')+'</td><td>'+esc(i.school||'')+'</td>'+
+      '<td style="display:flex;gap:4px"><button class="btn btn-edit btn-sm" onclick="openEdit(\'athletes\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delAthlete(\''+i.id+'\')">Del</button></td></tr>';
+  }).join('');
 }
 
-function renderAthletes(){
-  mobList('athletesMob',D.athletes,function(i){return i.name;},function(i){return[i.grad_year,i.school].filter(Boolean).join(' \u00b7 ');},'deleteAthlete');
-  document.getElementById('athletesTbody').innerHTML=D.athletes.length?D.athletes.map(function(a){return'<tr><td>'+(a.name||'')+'</td><td>'+(a.grad_year||'')+'</td><td>'+(a.school||'')+'</td><td><button class="btn btn-del btn-sm" onclick="deleteAthlete(\''+a.id+'\')">Remove</button></td></tr>';}).join(''):'<tr><td colspan="4" class="empty">No athletes yet.</td></tr>';
+function rLocations(){
+  var tb=document.getElementById('locationsTbody'),mob=document.getElementById('locationsMob');
+  if(!D.locations.length){tb.innerHTML='<tr><td colspan="6" class="empty">No locations yet.</td></tr>';mob.innerHTML='<div class="empty">No locations yet.</div>';return;}
+  mob.innerHTML=D.locations.map(function(i){
+    var cb=bmode.locations?'<input type="checkbox" '+(sel.locations.has(i.id)?'checked':'')+' onchange="tSel(\'locations\',\''+i.id+'\',this.checked)">':'';
+    return'<div class="list-item'+(sel.locations.has(i.id)?' sel':'')+'">'+
+      (bmode.locations?'<div style="flex-shrink:0">'+cb+'</div>':'')+
+      '<div class="li-info"><div class="li-name">'+esc(i.name||'')+'</div><div class="li-sub">'+esc([i.town,i.state].filter(Boolean).join(', '))+(i.is_school?' \u00b7 School':'')+'</div></div>'+
+      '<div class="li-acts"><button class="btn btn-edit btn-sm" onclick="openEdit(\'locations\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delLocation(\''+i.id+'\')">Del</button></div></div>';
+  }).join('');
+  tb.innerHTML=D.locations.map(function(i){
+    var chk='<td class="cb">'+(bmode.locations?'<input type="checkbox" '+(sel.locations.has(i.id)?'checked':'')+' onchange="tSel(\'locations\',\''+i.id+'\',this.checked)">':'')+'</td>';
+    return'<tr class="'+(sel.locations.has(i.id)?'sel':'')+'">'+chk+'<td>'+esc(i.name||'')+'</td><td>'+esc(i.town||'')+'</td><td>'+esc(i.state||'')+'</td><td>'+(i.is_school?'Yes':'')+'</td>'+
+      '<td style="display:flex;gap:4px"><button class="btn btn-edit btn-sm" onclick="openEdit(\'locations\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delLocation(\''+i.id+'\')">Del</button></td></tr>';
+  }).join('');
 }
 
-function renderLocations(){
-  mobList('locationsMob',D.locations,function(i){return i.name;},function(i){return[i.town,i.state].filter(Boolean).join(', ')+(i.is_school?' \u00b7 School':'');},'deleteLocation');
-  document.getElementById('locationsTbody').innerHTML=D.locations.length?D.locations.map(function(l){return'<tr><td>'+(l.name||'')+'</td><td>'+(l.town||'')+'</td><td>'+(l.state||'')+'</td><td>'+(l.is_school?'Yes':'')+'</td><td><button class="btn btn-del btn-sm" onclick="deleteLocation(\''+l.id+'\')">Remove</button></td></tr>';}).join(''):'<tr><td colspan="5" class="empty">No locations yet.</td></tr>';
+function rTournaments(){
+  var tb=document.getElementById('tournamentsTbody'),mob=document.getElementById('tournamentsMob');
+  if(!D.tournaments.length){tb.innerHTML='<tr><td colspan="5" class="empty">No tournaments yet.</td></tr>';mob.innerHTML='<div class="empty">No tournaments yet.</div>';return;}
+  mob.innerHTML=D.tournaments.map(function(i){
+    var cb=bmode.tournaments?'<input type="checkbox" '+(sel.tournaments.has(i.id)?'checked':'')+' onchange="tSel(\'tournaments\',\''+i.id+'\',this.checked)">':'';
+    return'<div class="list-item'+(sel.tournaments.has(i.id)?' sel':'')+'">'+
+      (bmode.tournaments?'<div style="flex-shrink:0">'+cb+'</div>':'')+
+      '<div class="li-info"><div class="li-name">'+esc(i.name||'')+'</div><div class="li-sub">'+esc([i.location,i.season].filter(Boolean).join(' \u00b7 '))+'</div></div>'+
+      '<div class="li-acts"><button class="btn btn-edit btn-sm" onclick="openEdit(\'tournaments\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delTournament(\''+i.id+'\')">Del</button></div></div>';
+  }).join('');
+  tb.innerHTML=D.tournaments.map(function(i){
+    var chk='<td class="cb">'+(bmode.tournaments?'<input type="checkbox" '+(sel.tournaments.has(i.id)?'checked':'')+' onchange="tSel(\'tournaments\',\''+i.id+'\',this.checked)">':'')+'</td>';
+    return'<tr class="'+(sel.tournaments.has(i.id)?'sel':'')+'">'+chk+'<td>'+esc(i.name||'')+'</td><td>'+esc(i.location||'')+'</td><td>'+esc(i.season||'')+'</td>'+
+      '<td style="display:flex;gap:4px"><button class="btn btn-edit btn-sm" onclick="openEdit(\'tournaments\',\''+i.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="delTournament(\''+i.id+'\')">Del</button></td></tr>';
+  }).join('');
 }
 
-function renderTournaments(){
-  mobList('tournamentsMob',D.tournaments,function(i){return i.name;},function(i){return[i.location,i.season].filter(Boolean).join(' \u00b7 ');},'deleteTournament');
-  document.getElementById('tournamentsTbody').innerHTML=D.tournaments.length?D.tournaments.map(function(t){return'<tr><td>'+(t.name||'')+'</td><td>'+(t.location||'')+'</td><td>'+(t.season||'')+'</td><td><button class="btn btn-del btn-sm" onclick="deleteTournament(\''+t.id+'\')">Remove</button></td></tr>';}).join(''):'<tr><td colspan="4" class="empty">No tournaments yet.</td></tr>';
-}
-
-function fillModalDrops(){
-  // Athletes
-  var a=document.getElementById('m-athlete'),av=a.value;
-  a.innerHTML='<option value="">Unknown</option>'+D.athletes.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
-  a.value=av;
-
-  // Locations
-  var l=document.getElementById('m-location'),lv=l.value;
-  l.innerHTML='<option value="">Unknown</option>'+D.locations.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
-  l.value=lv;
-
-  // Tournaments - first option is "Dual Meet" (no tournament)
+function fillDrops(){
+  function fill(id,items,lbl){var el=document.getElementById(id);if(!el)return;var v=el.value;el.innerHTML='<option value="">'+lbl+'</option>'+items.map(function(i){return'<option value="'+i.id+'">'+esc(i.name||'')+'</option>';}).join('');el.value=v;}
+  fill('m-athlete',D.athletes,'Unknown');fill('m-location',D.locations,'Unknown');
   var t=document.getElementById('m-tournament'),tv=t.value;
-  t.innerHTML='<option value="">Dual Meet</option><option value="unknown">Unknown</option>'+
-    D.tournaments.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
-  t.value=tv;
-
-  // Tournament location dropdown in add form
-  var tl=document.getElementById('trn-loc');
-  if(tl){
-    var tlv=tl.value;
-    tl.innerHTML='<option value="">Select location...</option><option value="Unknown">Unknown</option>'+
-      D.locations.map(function(i){return'<option value="'+i.name+'">'+i.name+'</option>';}).join('');
-    tl.value=tlv;
-  }
-
-  // School datalist for opponent school
-  var dl=document.getElementById('school-list');
-  if(dl){
-    dl.innerHTML=D.locations.filter(function(i){return i.is_school;}).map(function(i){return'<option value="'+i.name+'"></option>';}).join('');
-  }
+  t.innerHTML='<option value="">Dual Meet</option><option value="unknown">Unknown</option>'+D.tournaments.map(function(i){return'<option value="'+i.id+'">'+esc(i.name||'')+'</option>';}).join('');t.value=tv;
+  var tl=document.getElementById('trn-loc');if(tl){var tlv=tl.value;tl.innerHTML='<option value="">Select location...</option><option value="Unknown">Unknown</option>'+D.locations.map(function(i){return'<option value="'+esc(i.name||'')+'">'+esc(i.name||'')+'</option>';}).join('');tl.value=tlv;}
+  var dl=document.getElementById('school-list');if(dl)dl.innerHTML=D.locations.filter(function(i){return i.is_school;}).map(function(i){return'<option value="'+esc(i.name||'')+'"></option>';}).join('');
 }
 
-function fillReportFilters(){
-  var a=document.getElementById('r-athlete'),av=a.value;
-  a.innerHTML='<option value="">All Athletes</option>'+D.athletes.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');a.value=av;
-  var seasons=[...new Set(D.matches.map(function(m){return m.season;}).filter(Boolean))].sort();
-  var s=document.getElementById('r-season'),sv=s.value;
-  s.innerHTML='<option value="">All Seasons</option>'+seasons.map(function(x){return'<option>'+x+'</option>';}).join('');s.value=sv;
+function fillRptFilters(){
+  var a=document.getElementById('r-athlete'),av=a.value;a.innerHTML='<option value="">All Athletes</option>'+D.athletes.map(function(i){return'<option value="'+i.id+'">'+esc(i.name||'')+'</option>';}).join('');a.value=av;
+  var seas=[...new Set(D.matches.map(function(m){return m.season;}).filter(Boolean))].sort();
+  var s=document.getElementById('r-season'),sv=s.value;s.innerHTML='<option value="">All Seasons</option>'+seas.map(function(x){return'<option>'+x+'</option>';}).join('');s.value=sv;
 }
 
-// When tournament is selected, auto-populate location, event type, and season
-function onTournamentChange(){
+function onTrnChange(){
   var tid=document.getElementById('m-tournament').value;
-  if(!tid){
-    // Dual meet selected
-    document.getElementById('m-event').value='Dual Meet';
-    return;
-  }
-  if(tid==='unknown'){
-    document.getElementById('m-event').value='Unknown';
-    return;
-  }
-  var trn=D.tournaments.find(function(t){return t.id===tid;});
-  if(!trn) return;
-
-  // Auto-populate event type
+  if(!tid){document.getElementById('m-event').value='Dual Meet';return;}
+  if(tid==='unknown'){document.getElementById('m-event').value='Unknown';return;}
+  var trn=D.tournaments.find(function(t){return t.id===tid;});if(!trn)return;
   document.getElementById('m-event').value='Tournament';
-
-  // Auto-populate season
-  if(trn.season) document.getElementById('m-season').value=trn.season;
-
-  // Auto-populate location by matching tournament location name to locations list
-  if(trn.location){
-    var loc=D.locations.find(function(l){return l.name===trn.location;});
-    if(loc) document.getElementById('m-location').value=loc.id;
-  }
+  if(trn.season)document.getElementById('m-season').value=trn.season;
+  if(trn.location){var loc=D.locations.find(function(l){return l.name===trn.location;});if(loc)document.getElementById('m-location').value=loc.id;}
 }
 
-// Result toggle
 function setResult(r){
-  currentResult=r;
-  document.getElementById('btn-win').className='result-btn'+(r==='Win'?' win-active':'');
-  document.getElementById('btn-loss').className='result-btn'+(r==='Loss'?' loss-active':'');
+  curResult=r;
+  document.getElementById('btn-win').className='result-btn'+(r==='Win'?' win-on':'');
+  document.getElementById('btn-loss').className='result-btn'+(r==='Loss'?' loss-on':'');
   document.getElementById('winWrap').style.display=r==='Win'?'':'none';
   document.getElementById('lossWrap').style.display=r==='Loss'?'':'none';
 }
 
+function toggleBulk(tab){
+  bmode[tab]=!bmode[tab];
+  document.getElementById('bb-'+tab).className='btn-bulk'+(bmode[tab]?' on':'');
+  document.getElementById('bar-'+tab).className='bulk-bar'+(bmode[tab]?' show':'');
+  if(!bmode[tab]){sel[tab].clear();updBC(tab);}
+  renderAll();
+}
+function tSel(tab,id,checked){if(checked)sel[tab].add(id);else sel[tab].delete(id);updBC(tab);renderAll();}
+function saToggle(tab,checked){D[tab].forEach(function(i){if(checked)sel[tab].add(i.id);else sel[tab].delete(i.id);});updBC(tab);renderAll();}
+function selAll(tab){saToggle(tab,true);}
+function selNone(tab){saToggle(tab,false);}
+function updBC(tab){var el=document.getElementById('bc-'+tab);if(el)el.textContent=sel[tab].size;}
+
+function buildBulkVal(tab){
+  var field=document.getElementById('bf-'+tab).value,wrap=document.getElementById('bv-'+tab);
+  if(!field){wrap.innerHTML='';return;}
+  var h='<label>New Value:</label>';
+  if(field==='season')h+='<select id="bvv-'+tab+'">'+SEAS.map(function(s){return'<option>'+s+'</option>';}).join('')+'</select>';
+  else if(field==='level')h+='<select id="bvv-'+tab+'"><option>Varsity</option><option>JV</option></select>';
+  else if(field==='event_type')h+='<select id="bvv-'+tab+'"><option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option></select>';
+  else if(field==='result')h+='<select id="bvv-'+tab+'"><option>Win</option><option>Loss</option></select>';
+  else if(field==='weight_class')h+='<select id="bvv-'+tab+'"><option>106</option><option>113</option><option>120</option><option>126</option><option>132</option><option>138</option><option>145</option><option>152</option><option>160</option><option>170</option><option>182</option><option>195</option><option>220</option><option>285</option></select>';
+  else if(field==='athlete_id')h+='<select id="bvv-'+tab+'"><option value="">Unknown</option>'+D.athletes.map(function(a){return'<option value="'+a.id+'">'+esc(a.name||'')+'</option>';}).join('')+'</select>';
+  else if(field==='is_school')h+='<select id="bvv-'+tab+'"><option value="true">Yes (School)</option><option value="false">No</option></select>';
+  else if(field==='location')h+='<select id="bvv-'+tab+'"><option value="">Unknown</option>'+D.locations.map(function(l){return'<option value="'+esc(l.name||'')+'">'+esc(l.name||'')+'</option>';}).join('')+'</select>';
+  else h+='<input id="bvv-'+tab+'" placeholder="new value">';
+  wrap.innerHTML=h;
+}
+
+async function applyBulk(tab){
+  var ids=[...sel[tab]];if(!ids.length){toast('No items selected.',true);return;}
+  var field=document.getElementById('bf-'+tab).value;if(!field){toast('Pick a field.',true);return;}
+  var ve=document.getElementById('bvv-'+tab);if(!ve){toast('Enter a value.',true);return;}
+  var val=ve.value;if(field==='is_school')val=val==='true';
+  if(!confirm('Apply to '+ids.length+' items?'))return;
+  var upd={};upd[field]=val||null;
+  try{var r=await sb.from(tab).update(upd).in('id',ids);if(r.error)throw r.error;toast('Updated '+ids.length+'.');sel[tab].clear();await loadAll();}
+  catch(e){toast(e.message,true);}
+}
+
+async function bulkDel(tab){
+  var ids=[...sel[tab]];if(!ids.length){toast('No items selected.',true);return;}
+  if(!confirm('Delete '+ids.length+' items?'))return;
+  try{var r=await sb.from(tab).delete().in('id',ids);if(r.error)throw r.error;toast('Deleted '+ids.length+'.');sel[tab].clear();await loadAll();}
+  catch(e){toast(e.message,true);}
+}
+
+function openEdit(table,id){
+  editTbl=table;editRec=D[table].find(function(x){return x.id===id;});if(!editRec)return;
+  document.getElementById('editTitle').textContent='Edit '+{athletes:'Athlete',locations:'Location',tournaments:'Tournament'}[table];
+  var h='<div class="form-grid">';
+  if(table==='athletes'){
+    h+='<div class="field f-full"><label>Name</label><input id="ef-name" value="'+esc(editRec.name||'')+'"></div>'+
+       '<div class="field"><label>Grad Year</label><input id="ef-grad_year" value="'+esc(editRec.grad_year||'')+'"></div>'+
+       '<div class="field"><label>School</label><input id="ef-school" value="'+esc(editRec.school||'')+'"></div>';
+  }else if(table==='locations'){
+    h+='<div class="field f-full"><label>Name</label><input id="ef-name" value="'+esc(editRec.name||'')+'"></div>'+
+       '<div class="field"><label>Town</label><input id="ef-town" value="'+esc(editRec.town||'')+'"></div>'+
+       '<div class="field"><label>State</label><input id="ef-state" value="'+esc(editRec.state||'')+'"></div>'+
+       '<div class="field f-full"><label class="check-field"><input type="checkbox" id="ef-is_school" '+(editRec.is_school?'checked':'')+' style="width:20px;height:20px;accent-color:var(--accent);-webkit-appearance:checkbox;appearance:checkbox"><span>This is a school</span></label></div>';
+  }else if(table==='tournaments'){
+    var lo=D.locations.map(function(l){return'<option value="'+esc(l.name||'')+'"'+(editRec.location===l.name?' selected':'')+'>'+esc(l.name||'')+'</option>';}).join('');
+    var so=SEAS.map(function(s){return'<option'+(editRec.season===s?' selected':'')+'>'+s+'</option>';}).join('');
+    h+='<div class="field f-full"><label>Name</label><input id="ef-name" value="'+esc(editRec.name||'')+'"></div>'+
+       '<div class="field"><label>Location</label><select id="ef-location"><option value="">Unknown</option>'+lo+'</select></div>'+
+       '<div class="field"><label>Season</label><select id="ef-season">'+so+'</select></div>';
+  }
+  h+='</div>';
+  document.getElementById('editBody').innerHTML=h;
+  document.getElementById('editModal').style.display='flex';
+  document.body.style.overflow='hidden';
+}
+
+async function saveEdit(){
+  var upd={};
+  if(editTbl==='athletes'){upd.name=document.getElementById('ef-name').value||null;upd.grad_year=document.getElementById('ef-grad_year').value||null;upd.school=document.getElementById('ef-school').value||null;}
+  else if(editTbl==='locations'){upd.name=document.getElementById('ef-name').value||null;upd.town=document.getElementById('ef-town').value||null;upd.state=document.getElementById('ef-state').value||null;upd.is_school=document.getElementById('ef-is_school').checked;}
+  else if(editTbl==='tournaments'){upd.name=document.getElementById('ef-name').value||null;upd.location=document.getElementById('ef-location').value||null;upd.season=document.getElementById('ef-season').value||null;}
+  try{var r=await sb.from(editTbl).update(upd).eq('id',editRec.id);if(r.error)throw r.error;toast('Saved.');closeEditModal();await loadAll();}
+  catch(e){toast(e.message,true);}
+}
+function closeEditModal(){document.getElementById('editModal').style.display='none';document.body.style.overflow='';editRec=null;editTbl=null;}
+
 function renderReports(){
-  var af=document.getElementById('r-athlete').value,sf=document.getElementById('r-season').value;
-  var lf=document.getElementById('r-level').value,ef=document.getElementById('r-event').value;
+  var af=document.getElementById('r-athlete').value,sf=document.getElementById('r-season').value,lf=document.getElementById('r-level').value,ef=document.getElementById('r-event').value;
   var f=D.matches.filter(function(m){return(!af||m.athlete_id===af)&&(!sf||m.season===sf)&&(!lf||m.level===lf)&&(!ef||m.event_type===ef);});
-  setStats(f,'rs-total','rs-wins','rs-losses','rs-pct','rs-pins','rs-tech');
+  doStats(f,'rs-total','rs-wins','rs-losses','rs-pct','rs-pins','rs-tech');
   document.getElementById('rMatchCount').textContent=f.length?'('+f.length+')':'';
-  var weights=['106','113','120','126','132','138','145','152','160','170','182','195','220','285'];
-  var wRows=weights.map(function(w){var ms=f.filter(function(m){return m.weight_class===w;});if(!ms.length)return null;var s=calcStats(ms);return'<tr><td><strong>'+w+'</strong></td><td style="color:var(--win)">'+s.wins+'</td><td style="color:var(--loss)">'+s.losses+'</td><td>'+s.pct+'%</td><td>'+s.pins+'</td><td>'+s.tech+'</td></tr>';}).filter(Boolean);
-  document.getElementById('weightTbody').innerHTML=wRows.join('');
-  document.getElementById('wCard').style.display=wRows.length?'':'none';
+  var wts=['106','113','120','126','132','138','145','152','160','170','182','195','220','285'];
+  var wr=wts.map(function(w){var ms=f.filter(function(m){return m.weight_class===w;});if(!ms.length)return null;var s=cStats(ms);return'<tr><td><strong>'+w+'</strong></td><td style="color:var(--win)">'+s.wins+'</td><td style="color:var(--loss)">'+s.losses+'</td><td>'+s.pct+'%</td><td>'+s.pins+'</td><td>'+s.tech+'</td></tr>';}).filter(Boolean);
+  document.getElementById('weightTbody').innerHTML=wr.join('');document.getElementById('wCard').style.display=wr.length?'':'none';
   var sorted=f.slice().sort(function(a,b){return(b.date||'').localeCompare(a.date||'');});
-  document.getElementById('reportCards').innerHTML=sorted.length?sorted.map(function(m){return mcHTML(m,false);}).join(''):'<div class="empty">No matches match the filters.</div>';
+  document.getElementById('reportCards').innerHTML=sorted.length?sorted.map(function(m){return mcH(m,false);}).join(''):'<div class="empty">No matches.</div>';
   var tb=document.getElementById('reportTbody');
-  if(!sorted.length){tb.innerHTML='<tr><td colspan="11" class="empty">No matches match the filters.</td></tr>';return;}
+  if(!sorted.length){tb.innerHTML='<tr><td colspan="11" class="empty">No matches.</td></tr>';return;}
   tb.innerHTML=sorted.map(function(m){return'<tr><td>'+(m.date||'')+'</td><td>'+aN(m.athlete_id)+'</td><td>'+(m.season||'')+'</td><td>'+(m.event_type||'')+(tN(m.tournament_id)?' / '+tN(m.tournament_id):'')+'</td><td>'+lN(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td><td><span class="bdg '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td><td>'+(m.opponent_school||'')+'</td><td><span class="bdg '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td><td>'+(m.score||'')+'</td><td style="font-size:.78rem;color:var(--muted)">'+(m.notes||'')+'</td></tr>';}).join('');
 }
 
 function openMatchModal(match){
   editId=match?match.id:null;
   document.getElementById('modalTitle').textContent=match?'Edit Match':'Log a Match';
-  fillModalDrops();
-
+  fillDrops();
   if(match){
-    document.getElementById('m-date').value=match.date||'';
-    document.getElementById('m-season').value=match.season||'2024-25';
-    document.getElementById('m-athlete').value=match.athlete_id||'';
-    document.getElementById('m-tournament').value=match.tournament_id||'';
-    document.getElementById('m-event').value=match.event_type||'Dual Meet';
-    document.getElementById('m-location').value=match.location_id||'';
-    document.getElementById('m-weight').value=match.weight_class||'152';
-    document.getElementById('m-level').value=match.level||'Varsity';
-    document.getElementById('m-wintype').value=match.win_type||'Decision';
-    document.getElementById('m-losstype').value=match.loss_type||'Decision';
-    document.getElementById('m-score').value=match.score||'';
-    document.getElementById('m-oppschool').value=match.opponent_school||'';
-    document.getElementById('m-notes').value=match.notes||'';
+    document.getElementById('m-date').value=match.date||'';document.getElementById('m-season').value=match.season||'2024-25';
+    document.getElementById('m-athlete').value=match.athlete_id||'';document.getElementById('m-tournament').value=match.tournament_id||'';
+    document.getElementById('m-event').value=match.event_type||'Dual Meet';document.getElementById('m-location').value=match.location_id||'';
+    document.getElementById('m-weight').value=match.weight_class||'152';document.getElementById('m-level').value=match.level||'Varsity';
+    document.getElementById('m-wintype').value=match.win_type||'Decision';document.getElementById('m-losstype').value=match.loss_type||'Decision';
+    document.getElementById('m-score').value=match.score||'';document.getElementById('m-oppschool').value=match.opponent_school||'';document.getElementById('m-notes').value=match.notes||'';
     setResult(match.result||'Win');
   }else{
-    document.getElementById('m-date').value=new Date().toISOString().split('T')[0];
-    document.getElementById('m-season').value=latestTournamentSeason();
-    document.getElementById('m-athlete').value=D.athletes.length===1?D.athletes[0].id:'';
-    document.getElementById('m-tournament').value='';
-    document.getElementById('m-event').value='Dual Meet';
-    document.getElementById('m-location').value='';
-    document.getElementById('m-weight').value='152';
-    document.getElementById('m-level').value='Varsity';
-    document.getElementById('m-wintype').value='Decision';
-    document.getElementById('m-score').value='';
-    document.getElementById('m-oppschool').value='';
-    document.getElementById('m-notes').value='';
+    document.getElementById('m-date').value=new Date().toISOString().split('T')[0];document.getElementById('m-season').value=latestSeas();
+    document.getElementById('m-athlete').value=D.athletes.length===1?D.athletes[0].id:'';document.getElementById('m-tournament').value='';
+    document.getElementById('m-event').value='Dual Meet';document.getElementById('m-location').value='';document.getElementById('m-weight').value='152';
+    document.getElementById('m-level').value='Varsity';document.getElementById('m-wintype').value='Decision';
+    document.getElementById('m-score').value='';document.getElementById('m-oppschool').value='';document.getElementById('m-notes').value='';
     setResult('Win');
   }
-
-  document.getElementById('matchModal').style.display='flex';
-  document.body.style.overflow='hidden';
+  document.getElementById('matchModal').style.display='flex';document.body.style.overflow='hidden';
 }
-
 function editMatch(id){var m=D.matches.find(function(m){return m.id===id;});if(m)openMatchModal(m);}
 function closeModal(){document.getElementById('matchModal').style.display='none';document.body.style.overflow='';}
 
 async function saveMatch(){
   function g(id){return document.getElementById(id).value||null;}
-  var m={
-    date:g('m-date'),
-    season:g('m-season'),
-    athlete_id:g('m-athlete'),
-    event_type:g('m-event')||'Dual Meet',
-    location_id:g('m-location'),
-    tournament_id:g('m-tournament'),
-    weight_class:g('m-weight'),
-    level:g('m-level'),
-    result:currentResult,
-    win_type:currentResult==='Win'?g('m-wintype'):null,
-    loss_type:currentResult==='Loss'?g('m-losstype'):null,
-    score:g('m-score'),
-    opponent_school:g('m-oppschool'),
-    notes:g('m-notes')
-  };
-  try{
-    var res=editId?await sb.from('matches').update(m).eq('id',editId):await sb.from('matches').insert(m);
-    if(res.error)throw res.error;
-    toast(editId?'Match updated.':'Match saved.');closeModal();await loadAll();
-  }catch(e){toast(e.message,true);}
+  var m={date:g('m-date'),season:g('m-season'),athlete_id:g('m-athlete'),event_type:g('m-event')||'Dual Meet',location_id:g('m-location'),tournament_id:g('m-tournament'),weight_class:g('m-weight'),level:g('m-level'),result:curResult,win_type:curResult==='Win'?g('m-wintype'):null,loss_type:curResult==='Loss'?g('m-losstype'):null,score:g('m-score'),opponent_school:g('m-oppschool'),notes:g('m-notes')};
+  try{var r=editId?await sb.from('matches').update(m).eq('id',editId):await sb.from('matches').insert(m);if(r.error)throw r.error;toast(editId?'Updated.':'Saved.');closeModal();await loadAll();}catch(e){toast(e.message,true);}
 }
+async function delMatch(id){if(!confirm('Delete?'))return;var r=await sb.from('matches').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Deleted.');await loadAll();}
 
-async function deleteMatch(id){if(!confirm('Delete this match?'))return;var r=await sb.from('matches').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Deleted.');await loadAll();}
+async function addAthlete(){var n=document.getElementById('ath-name').value.trim();if(!n){toast('Name required.',true);return;}var r=await sb.from('athletes').insert({name:n,grad_year:document.getElementById('ath-grad').value||null,school:document.getElementById('ath-school').value||null});if(r.error){toast(r.error.message,true);return;}toast('Added.');['ath-name','ath-grad','ath-school'].forEach(function(id){document.getElementById(id).value='';});toggleForm('athletes');await loadAll();}
+async function delAthlete(id){if(!confirm('Remove?'))return;var r=await sb.from('athletes').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Removed.');await loadAll();}
 
-async function addAthlete(){
-  var n=document.getElementById('ath-name').value.trim();if(!n){toast('Name is required.',true);return;}
-  var r=await sb.from('athletes').insert({name:n,grad_year:document.getElementById('ath-grad').value||null,school:document.getElementById('ath-school').value||null});
-  if(r.error){toast(r.error.message,true);return;}
-  toast('Added.');['ath-name','ath-grad','ath-school'].forEach(function(id){document.getElementById(id).value='';});toggleForm('athletes');await loadAll();
-}
-async function deleteAthlete(id){if(!confirm('Remove?'))return;var r=await sb.from('athletes').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Removed.');await loadAll();}
+async function addLocation(){var n=document.getElementById('loc-name').value.trim();if(!n){toast('Name required.',true);return;}var r=await sb.from('locations').insert({name:n,town:document.getElementById('loc-town').value||null,state:document.getElementById('loc-state').value||null,is_school:document.getElementById('loc-is-school').checked});if(r.error){toast(r.error.message,true);return;}toast('Added.');['loc-name','loc-town','loc-state'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('loc-is-school').checked=true;toggleForm('locations');await loadAll();}
+async function delLocation(id){if(!confirm('Remove?'))return;var r=await sb.from('locations').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Removed.');await loadAll();}
 
-async function addLocation(){
-  var n=document.getElementById('loc-name').value.trim();if(!n){toast('Name is required.',true);return;}
-  var isSchool=document.getElementById('loc-is-school').checked;
-  var r=await sb.from('locations').insert({name:n,town:document.getElementById('loc-town').value||null,state:document.getElementById('loc-state').value||null,is_school:isSchool});
-  if(r.error){toast(r.error.message,true);return;}
-  toast('Added.');['loc-name','loc-town','loc-state'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('loc-is-school').checked=true;toggleForm('locations');await loadAll();
-}
-async function deleteLocation(id){if(!confirm('Remove?'))return;var r=await sb.from('locations').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Removed.');await loadAll();}
+async function addTournament(){var n=document.getElementById('trn-name').value.trim();if(!n){toast('Name required.',true);return;}var r=await sb.from('tournaments').insert({name:n,location:document.getElementById('trn-loc').value||null,season:document.getElementById('trn-season').value||null});if(r.error){toast(r.error.message,true);return;}toast('Added.');document.getElementById('trn-name').value='';toggleForm('tournaments');await loadAll();}
+async function delTournament(id){if(!confirm('Remove?'))return;var r=await sb.from('tournaments').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Removed.');await loadAll();}
 
-async function addTournament(){
-  var n=document.getElementById('trn-name').value.trim();if(!n){toast('Name is required.',true);return;}
-  var r=await sb.from('tournaments').insert({name:n,location:document.getElementById('trn-loc').value||null,season:document.getElementById('trn-season').value||null});
-  if(r.error){toast(r.error.message,true);return;}
-  toast('Added.');document.getElementById('trn-name').value='';toggleForm('tournaments');await loadAll();
-}
-async function deleteTournament(id){if(!confirm('Remove?'))return;var r=await sb.from('tournaments').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Removed.');await loadAll();}
-
-function switchTab(name,btn){
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
-  btn.classList.add('active');
-  document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('active');});
-  document.getElementById('pane-'+name).classList.add('active');
-  if(name==='reports')renderReports();
-  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-}
-
-function toggleForm(name){
-  var el=document.getElementById('addForm-'+name);
-  el.style.display=el.style.display==='none'?'':'none';
-  if(name==='tournaments'&&el.style.display!=='none')fillModalDrops();
-}
-
+function switchTab(name,btn){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});btn.classList.add('active');document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('active');});document.getElementById('pane-'+name).classList.add('active');if(name==='reports')renderReports();btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+function toggleForm(name){var el=document.getElementById('addForm-'+name);el.style.display=el.style.display==='none'?'':'none';if(name==='tournaments'&&el.style.display!=='none')fillDrops();}
 var toastTimer;
 function toast(msg,err){var el=document.getElementById('toast');el.textContent=msg;el.className='toast'+(err?' err':'');el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.style.display='none';},3000);}
 </script>
