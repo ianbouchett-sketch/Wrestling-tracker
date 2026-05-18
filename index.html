@@ -179,6 +179,10 @@ tr:hover td{background:var(--surface2)}
           <option selected>2024-25</option><option>2024-25 Off-Season</option>
           <option>2025-26</option><option>2025-26 Off-Season</option>
           <option>2026-27</option><option>2026-27 Off-Season</option>
+          <option>2027-28</option><option>2027-28 Off-Season</option>
+          <option>2028-29</option><option>2028-29 Off-Season</option>
+          <option>2029-30</option><option>2029-30 Off-Season</option>
+          <option>2030-31</option><option>2030-31 Off-Season</option>
         </select></div>
       </div>
       <div class="form-actions"><button class="btn btn-acc btn-sm" onclick="addTournament()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleForm('tournaments')">Cancel</button></div>
@@ -227,6 +231,10 @@ tr:hover td{background:var(--surface2)}
         <option selected>2024-25</option><option>2024-25 Off-Season</option>
         <option>2025-26</option><option>2025-26 Off-Season</option>
         <option>2026-27</option><option>2026-27 Off-Season</option>
+        <option>2027-28</option><option>2027-28 Off-Season</option>
+        <option>2028-29</option><option>2028-29 Off-Season</option>
+        <option>2029-30</option><option>2029-30 Off-Season</option>
+        <option>2030-31</option><option>2030-31 Off-Season</option>
       </select></div>
       <div class="field"><label>Athlete</label><select id="m-athlete"><option value="">Select...</option><option value="unknown">Unknown</option></select></div>
       <div class="field"><label>Event Type</label><select id="m-event"><option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option></select></div>
@@ -306,8 +314,7 @@ function tN(id){var a=D.tournaments.find(function(x){return x.id===id;});return 
 
 function mcHTML(m,acts){
   var win=m.result==='Win';
-  var tn=tN(m.tournament_id);
-  var ln=lN(m.location_id);
+  var tn=tN(m.tournament_id);var ln=lN(m.location_id);
   var ah=acts?('<div class="mc-acts"><button class="btn btn-ghost btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="deleteMatch(\''+m.id+'\')">Del</button></div>'):'';
   return '<div class="match-card"><div class="mc-top"><div>'+
     '<div class="mc-result '+(win?'win':'loss')+'">'+(win?'W':'L')+' \u2014 '+(win?(m.win_type||''):(m.loss_type||''))+'</div>'+
