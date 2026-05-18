@@ -15,14 +15,12 @@
   }
   html, body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; min-height: 100vh; overflow-x: hidden; }
   .app { max-width: 1140px; margin: 0 auto; padding: 0 14px 100px; }
-
   .header { padding: 20px 0 16px; border-bottom: 2px solid var(--accent); margin-bottom: 18px; }
   .header-top { display: flex; align-items: center; justify-content: space-between; }
   .header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
   .header h1 span { color: var(--accent); }
   .header-sub { color: var(--muted); font-size: 0.75rem; margin-top: 3px; letter-spacing: 0.1em; text-transform: uppercase; }
   .gear-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--label); border-radius: 6px; padding: 8px 12px; cursor: pointer; font-size: 1rem; line-height: 1; }
-
   .url-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-top: 12px; display: none; }
   .url-panel.open { display: block; }
   .url-panel label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--label); display: block; margin-bottom: 6px; }
@@ -30,31 +28,26 @@
   .url-status { font-size: 0.75rem; margin-top: 8px; }
   .url-ok { color: var(--win); }
   .url-no { color: var(--muted); }
-
   .stats-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
   .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; }
   .stat-val { font-family: 'Barlow Condensed', sans-serif; font-size: 1.9rem; font-weight: 900; line-height: 1; color: var(--accent); }
   .stat-val.win { color: var(--win); }
   .stat-val.loss { color: var(--loss); }
   .stat-lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-top: 3px; }
-
   .tabs-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 18px; border-bottom: 1px solid var(--border); }
   .tabs-wrap::-webkit-scrollbar { display: none; }
   .tabs { display: flex; width: max-content; min-width: 100%; }
   .tab { font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 16px; background: none; border: none; color: var(--muted); cursor: pointer; position: relative; white-space: nowrap; -webkit-tap-highlight-color: transparent; }
   .tab.active { color: var(--accent); }
   .tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: var(--accent); }
-
   .sec-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
   .sec-hdr h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
-
   .btn { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 9px 18px; border-radius: 5px; border: none; cursor: pointer; font-size: 0.9rem; transition: opacity 0.15s; -webkit-tap-highlight-color: transparent; }
   .btn:active { opacity: 0.7; }
   .btn-acc { background: var(--accent); color: #0a0c0f; }
   .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--label); }
   .btn-del { background: transparent; border: 1px solid var(--loss); color: var(--loss); }
   .btn-sm { padding: 6px 12px; font-size: 0.78rem; }
-
   .match-cards { display: flex; flex-direction: column; gap: 10px; }
   .match-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
   .mc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
@@ -65,13 +58,10 @@
   .mc-acts { display: flex; gap: 6px; flex-shrink: 0; }
   .chips { display: flex; flex-wrap: wrap; gap: 5px; }
   .chip { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; white-space: nowrap; }
-  .c-win { background: rgba(46,204,113,0.15); color: var(--win); }
-  .c-loss { background: rgba(231,76,60,0.15); color: var(--loss); }
   .c-v { background: rgba(232,184,75,0.15); color: var(--accent); }
   .c-jv { background: rgba(106,117,133,0.2); color: var(--muted); }
   .c-n { background: var(--surface2); color: var(--label); }
   .mc-notes { font-size: 0.78rem; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
-
   .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
   thead tr { border-bottom: 2px solid var(--border); }
@@ -84,7 +74,6 @@
   .b-v { background: rgba(232,184,75,0.15); color: var(--accent); }
   .b-jv { background: rgba(106,117,133,0.2); color: var(--muted); }
   .empty { text-align: center; padding: 40px; color: var(--muted); font-style: italic; }
-
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .f-full { grid-column: 1 / -1; }
   .field { display: flex; flex-direction: column; gap: 6px; }
@@ -94,30 +83,23 @@
   .field select option { background: var(--surface2); }
   .field textarea { resize: vertical; min-height: 76px; }
   .form-actions { display: flex; gap: 10px; margin-top: 16px; }
-
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin-bottom: 14px; }
-
   .list-items { display: flex; flex-direction: column; gap: 8px; }
   .list-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   .li-info { flex: 1; min-width: 0; }
   .li-name { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .li-sub { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
-
   .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: flex-end; justify-content: center; z-index: 100; }
   .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 14px 14px 0 0; padding: 20px 16px 40px; width: 100%; max-width: 700px; max-height: 92vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
   .modal-handle { width: 40px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 16px; }
   .modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; color: var(--accent); }
-
   .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 11px 18px; border-radius: 6px; font-size: 0.88rem; z-index: 200; animation: slideUp 0.2s ease; pointer-events: none; white-space: nowrap; }
   .toast.err { border-left-color: var(--loss); }
   @keyframes slideUp { from { transform: translateX(-50%) translateY(8px); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
-
   .filter-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
   .filter-bar select { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 9px 10px; border-radius: 5px; font-family: 'Barlow', sans-serif; font-size: 0.88rem; width: 100%; -webkit-appearance: none; appearance: none; }
-
   .pane { display: none; }
   .pane.active { display: block; }
-
   @media (min-width: 700px) {
     .stats-strip { grid-template-columns: repeat(6, 1fr); }
     .header h1 { font-size: 2.6rem; }
@@ -148,7 +130,6 @@
       <div class="url-status url-no" id="urlStatus">Not connected</div>
     </div>
   </div>
-
   <div class="stats-strip">
     <div class="stat-card"><div class="stat-val" id="s-total">0</div><div class="stat-lbl">Matches</div></div>
     <div class="stat-card"><div class="stat-val win" id="s-wins">0</div><div class="stat-lbl">Wins</div></div>
@@ -157,7 +138,6 @@
     <div class="stat-card"><div class="stat-val" id="s-pins">0</div><div class="stat-lbl">Pins</div></div>
     <div class="stat-card"><div class="stat-val" id="s-tech">0</div><div class="stat-lbl">Tech Falls</div></div>
   </div>
-
   <div class="tabs-wrap">
     <div class="tabs">
       <button class="tab active" onclick="switchTab('matches',this)">Matches</button>
@@ -167,7 +147,6 @@
       <button class="tab" onclick="switchTab('reports',this)">Reports</button>
     </div>
   </div>
-
   <div id="pane-matches" class="pane active">
     <div class="sec-hdr">
       <h2>Match Log <span id="matchCount" style="color:var(--muted);font-size:0.85rem;font-weight:400"></span></h2>
@@ -179,7 +158,6 @@
       <tbody id="matchesTbody"><tr><td colspan="12" class="empty">No matches yet.</td></tr></tbody></table>
     </div>
   </div>
-
   <div id="pane-athletes" class="pane">
     <div class="card">
       <div class="sec-hdr"><h2>Athletes</h2><button class="btn btn-acc btn-sm" onclick="toggleForm('athletes')">+ Add</button></div>
@@ -195,7 +173,6 @@
       <div class="dsk tbl-wrap"><table><thead><tr><th>Name</th><th>Grad Year</th><th>School</th><th></th></tr></thead><tbody id="athletesTbody"><tr><td colspan="4" class="empty">No athletes yet.</td></tr></tbody></table></div>
     </div>
   </div>
-
   <div id="pane-locations" class="pane">
     <div class="card">
       <div class="sec-hdr"><h2>Locations</h2><button class="btn btn-acc btn-sm" onclick="toggleForm('locations')">+ Add</button></div>
@@ -211,7 +188,6 @@
       <div class="dsk tbl-wrap"><table><thead><tr><th>Name</th><th>Town</th><th>State</th><th></th></tr></thead><tbody id="locationsTbody"><tr><td colspan="4" class="empty">No locations yet.</td></tr></tbody></table></div>
     </div>
   </div>
-
   <div id="pane-tournaments" class="pane">
     <div class="card">
       <div class="sec-hdr"><h2>Tournaments</h2><button class="btn btn-acc btn-sm" onclick="toggleForm('tournaments')">+ Add</button></div>
@@ -227,7 +203,6 @@
       <div class="dsk tbl-wrap"><table><thead><tr><th>Name</th><th>Location</th><th>Season</th><th></th></tr></thead><tbody id="tournamentsTbody"><tr><td colspan="4" class="empty">No tournaments yet.</td></tr></tbody></table></div>
     </div>
   </div>
-
   <div id="pane-reports" class="pane">
     <div class="filter-bar">
       <select id="r-athlete" onchange="renderReports()"><option value="">All Athletes</option></select>
@@ -313,15 +288,39 @@ function onUrlChange(){
 
 async function api(action,payload){
   payload=payload||{};
-  if(!url){toast("Tap the gear icon and paste your Apps Script URL.",true);return null;}
-  try{
-    var params=Object.assign({action:action},payload);
-    var res=await fetch(url+"?data="+encodeURIComponent(JSON.stringify(params)),{method:"GET",redirect:"follow"});
-    var text=await res.text();
-    var d=JSON.parse(text);
-    if(d.error){toast(d.error,true);return null;}
-    return d;
-  }catch(e){toast("Connection error: "+e.message,true);return null;}
+  if(!url){toast('Tap the gear icon and paste your Apps Script URL.',true);return null;}
+  return new Promise(function(resolve){
+    var cb='cb_'+Date.now()+'_'+Math.floor(Math.random()*9999);
+    var params={action:action,callback:cb};
+    if(action==='addMatch'||action==='updateMatch'){params.match=JSON.stringify(payload.match);}
+    else if(action==='deleteMatch'){params.id=payload.id;}
+    else if(action==='addItem'){params.type=payload.type;params.item=JSON.stringify(payload.item);}
+    else if(action==='deleteItem'){params.type=payload.type;params.id=payload.id;}
+    var qs=Object.keys(params).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(params[k]);}).join('&');
+    var script=document.createElement('script');
+    var timer=setTimeout(function(){
+      delete window[cb];
+      if(script.parentNode)document.body.removeChild(script);
+      toast('Connection timed out. Check your Script URL.',true);
+      resolve(null);
+    },15000);
+    window[cb]=function(d){
+      clearTimeout(timer);
+      delete window[cb];
+      if(script.parentNode)document.body.removeChild(script);
+      if(d.error){toast(d.error,true);resolve(null);}
+      else resolve(d);
+    };
+    script.onerror=function(){
+      clearTimeout(timer);
+      delete window[cb];
+      if(script.parentNode)document.body.removeChild(script);
+      toast('Failed to reach script. Check your URL.',true);
+      resolve(null);
+    };
+    script.src=url+'?'+qs;
+    document.body.appendChild(script);
+  });
 }
 
 async function loadAll(){
@@ -385,12 +384,12 @@ function renderMatches(){
   var tb=document.getElementById('matchesTbody');
   if(!sorted.length){tb.innerHTML='<tr><td colspan="12" class="empty">No matches yet.</td></tr>';return;}
   tb.innerHTML=sorted.map(function(m){
-    return '<tr><td>'+( m.date||'')+'</td><td>'+aName(m.athlete_id)+'</td><td>'+(m.season||'')+'</td>'+
+    return '<tr><td>'+(m.date||'')+'</td><td>'+aName(m.athlete_id)+'</td><td>'+(m.season||'')+'</td>'+
       '<td>'+(m.event_type||'')+(tName(m.tournament_id)?' / '+tName(m.tournament_id):'')+'</td>'+
       '<td>'+lName(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td>'+
       '<td><span class="badge '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td>'+
       '<td>'+(m.opponent||'')+'</td>'+
-      '<td><span class="badge '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td>'+
+      '<td><span class="badge '+(m.result==='Win'?'b-win':'b-loss')+'\">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td>'+
       '<td>'+(m.score||'')+'</td>'+
       '<td style="font-size:.78rem;color:var(--muted);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(m.notes||'')+'</td>'+
       '<td style="display:flex;gap:5px"><button class="btn btn-ghost btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="deleteMatch(\''+m.id+'\')">Del</button></td></tr>';
@@ -450,7 +449,7 @@ function renderReports(){
   document.getElementById('reportCards').innerHTML=sorted.length?sorted.map(function(m){return mcHTML(m,false);}).join(''):'<div class="empty">No matches match the filters.</div>';
   var tb=document.getElementById('reportTbody');
   if(!sorted.length){tb.innerHTML='<tr><td colspan="11" class="empty">No matches match the filters.</td></tr>';return;}
-  tb.innerHTML=sorted.map(function(m){return'<tr><td>'+(m.date||'')+'</td><td>'+aName(m.athlete_id)+'</td><td>'+(m.season||'')+'</td><td>'+(m.event_type||'')+(tName(m.tournament_id)?' / '+tName(m.tournament_id):'')+'</td><td>'+lName(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td><td><span class="badge '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td><td>'+(m.opponent||'')+'</td><td><span class="badge '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td><td>'+(m.score||'')+'</td><td style="font-size:.78rem;color:var(--muted)">'+(m.notes||'')+'</td></tr>';}).join('');
+  tb.innerHTML=sorted.map(function(m){return'<tr><td>'+(m.date||'')+'</td><td>'+aName(m.athlete_id)+'</td><td>'+(m.season||'')+'</td><td>'+(m.event_type||'')+(tName(m.tournament_id)?' / '+tName(m.tournament_id):'')+'</td><td>'+lName(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td><td><span class="badge '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td><td>'+(m.opponent||'')+'</td><td><span class="badge '+(m.result==='Win'?'b-win':'b-loss')+'\">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td><td>'+(m.score||'')+'</td><td style="font-size:.78rem;color:var(--muted)">'+(m.notes||'')+'</td></tr>';}).join('');
 }
 
 function openMatchModal(match){
@@ -516,43 +515,5 @@ function toggleForm(name){var el=document.getElementById('addForm-'+name);el.sty
 var toastTimer;
 function toast(msg,err){var el=document.getElementById('toast');el.textContent=msg;el.className='toast'+(err?' err':'');el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.style.display='none';},3000);}
 </script>
-<!--
-GOOGLE APPS SCRIPT (paste into script.google.com, deploy as Web App, Execute as: Me, Who has access: Anyone):
-
-const SS_ID = "YOUR_SPREADSHEET_ID";
-
-function doGet(e) {
-  const raw = e.parameter.data;
-  const data = JSON.parse(raw);
-  const callback = data.callback;
-  const ss = SpreadsheetApp.openById(SS_ID);
-  let result = {};
-  try {
-    if (data.action === "getAll") {
-      result = { matches: getSheet(ss,"Matches"), athletes: getSheet(ss,"Athletes"), locations: getSheet(ss,"Locations"), tournaments: getSheet(ss,"Tournaments") };
-    } else if (data.action === "addMatch") {
-      result = addRow(ss, "Matches", { id: uuid(), ...data.match });
-    } else if (data.action === "updateMatch") {
-      result = updateRow(ss, "Matches", data.match);
-    } else if (data.action === "deleteMatch") {
-      result = deleteRow(ss, "Matches", data.id);
-    } else if (data.action === "addItem") {
-      result = addRow(ss, cap(data.type), { id: uuid(), ...data.item });
-    } else if (data.action === "deleteItem") {
-      result = deleteRow(ss, cap(data.type), data.id);
-    }
-  } catch(err) {
-    result = { error: err.message };
-  }
-  return ContentService.createTextOutput(callback + '(' + JSON.stringify(result) + ')').setMimeType(ContentService.MimeType.JAVASCRIPT);
-}
-
-function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
-function uuid(){return Utilities.getUuid();}
-function getSheet(ss,name){let sheet=ss.getSheetByName(name);if(!sheet)return[];const rows=sheet.getDataRange().getValues();if(rows.length<2)return[];const headers=rows[0];return rows.slice(1).map(r=>{const obj={};headers.forEach((h,i)=>obj[h]=r[i]);return obj;});}
-function addRow(ss,name,obj){let sheet=ss.getSheetByName(name);if(!sheet){sheet=ss.insertSheet(name);sheet.appendRow(Object.keys(obj));}else{const h=sheet.getRange(1,1,1,sheet.getLastColumn()).getValues()[0];if(!h[0])sheet.getRange(1,1,1,Object.keys(obj).length).setValues([Object.keys(obj)]);}sheet.appendRow(Object.keys(obj).map(k=>obj[k]));return{success:true};}
-function updateRow(ss,name,obj){const sheet=ss.getSheetByName(name);if(!sheet)return{error:"Sheet not found"};const data=sheet.getDataRange().getValues();const headers=data[0];const idCol=headers.indexOf("id");for(let i=1;i<data.length;i++){if(data[i][idCol]===obj.id){sheet.getRange(i+1,1,1,headers.length).setValues([headers.map(h=>obj[h]!==undefined?obj[h]:data[i][headers.indexOf(h)])]);return{success:true};}}return{error:"Row not found"};}
-function deleteRow(ss,name,id){const sheet=ss.getSheetByName(name);if(!sheet)return{error:"Sheet not found"};const data=sheet.getDataRange().getValues();const idCol=data[0].indexOf("id");for(let i=1;i<data.length;i++){if(data[i][idCol]===id){sheet.deleteRow(i+1);return{success:true};}}return{error:"Row not found"};}
--->
 </body>
 </html>
