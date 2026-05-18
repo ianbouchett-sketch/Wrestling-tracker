@@ -171,7 +171,7 @@ tr:hover td{background:var(--surface2)}
     <div id="addForm-tournaments" style="display:none;margin-bottom:16px">
       <div class="form-grid">
         <div class="field f-full"><label>Tournament Name</label><input id="trn-name" placeholder="Woodchuck Invitational"></div>
-        <div class="field"><label>Location</label><input id="trn-loc" placeholder="Essex Junction, VT"></div>
+        <div class="field"><label>Location</label><select id="trn-loc"><option value="">Select...</option><option value="Unknown">Unknown</option></select></div>
         <div class="field"><label>Season</label><input id="trn-season" placeholder="2024-25"></div>
       </div>
       <div class="form-actions"><button class="btn btn-acc btn-sm" onclick="addTournament()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleForm('tournaments')">Cancel</button></div>
@@ -214,10 +214,10 @@ tr:hover td{background:var(--surface2)}
     <div class="form-grid">
       <div class="field"><label>Date</label><input type="date" id="m-date"></div>
       <div class="field"><label>Season</label><select id="m-season"><option>2022-23</option><option>2023-24</option><option selected>2024-25</option><option>2025-26</option><option>2026-27</option></select></div>
-      <div class="field"><label>Athlete</label><select id="m-athlete"><option value="">Select...</option></select></div>
+      <div class="field"><label>Athlete</label><select id="m-athlete"><option value="">Select...</option><option value="unknown">Unknown</option></select></div>
       <div class="field"><label>Event Type</label><select id="m-event"><option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option></select></div>
-      <div class="field"><label>Location</label><select id="m-location"><option value="">Select...</option></select></div>
-      <div class="field"><label>Tournament</label><select id="m-tournament"><option value="">None</option></select></div>
+      <div class="field"><label>Location</label><select id="m-location"><option value="">Select...</option><option value="unknown">Unknown</option></select></div>
+      <div class="field"><label>Tournament</label><select id="m-tournament"><option value="">None</option><option value="unknown">Unknown</option></select></div>
       <div class="field"><label>Weight Class</label><select id="m-weight"><option>106</option><option>113</option><option>120</option><option>126</option><option>132</option><option>138</option><option>145</option><option selected>152</option><option>160</option><option>170</option><option>182</option><option>195</option><option>220</option><option>285</option></select></div>
       <div class="field"><label>Level</label><select id="m-level"><option>Varsity</option><option>JV</option></select></div>
       <div class="field"><label>Result</label><select id="m-result" onchange="toggleResultType()"><option>Win</option><option>Loss</option></select></div>
@@ -341,10 +341,26 @@ function renderTournaments(){
 }
 
 function fillModalDrops(){
-  function fill(id,items,lbl){var el=document.getElementById(id),v=el.value;el.innerHTML='<option value="">'+lbl+'</option>'+items.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');el.value=v;}
-  fill('m-athlete',D.athletes,'Select...');fill('m-location',D.locations,'Select...');
+  function fill(id,items,lbl){
+    var el=document.getElementById(id);if(!el)return;
+    var v=el.value;
+    el.innerHTML='<option value="">'+lbl+'</option><option value="unknown">Unknown</option>'+
+      items.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
+    el.value=v;
+  }
+  fill('m-athlete',D.athletes,'Select...');
+  fill('m-location',D.locations,'Select...');
   var t=document.getElementById('m-tournament'),v=t.value;
-  t.innerHTML='<option value="">None</option>'+D.tournaments.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');t.value=v;
+  t.innerHTML='<option value="">None</option><option value="unknown">Unknown</option>'+
+    D.tournaments.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
+  t.value=v;
+  var tl=document.getElementById('trn-loc');
+  if(tl){
+    var tlv=tl.value;
+    tl.innerHTML='<option value="">Select location...</option><option value="Unknown">Unknown</option>'+
+      D.locations.map(function(i){return'<option value="'+i.name+'">'+i.name+'</option>';}).join('');
+    tl.value=tlv;
+  }
 }
 
 function fillReportFilters(){
@@ -446,7 +462,11 @@ function switchTab(name,btn){
   btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 }
 
-function toggleForm(name){var el=document.getElementById('addForm-'+name);el.style.display=el.style.display==='none'?'':'none';}
+function toggleForm(name){
+  var el=document.getElementById('addForm-'+name);
+  el.style.display=el.style.display==='none'?'':'none';
+  if(name==='tournaments'&&el.style.display!=='none')fillModalDrops();
+}
 
 var toastTimer;
 function toast(msg,err){var el=document.getElementById('toast');el.textContent=msg;el.className='toast'+(err?' err':'');el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.style.display='none';},3000);}
