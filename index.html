@@ -88,6 +88,23 @@ tr:hover td{background:var(--surface2)}
 .filter-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
 .filter-bar select{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:5px;font-family:'Barlow',sans-serif;font-size:.88rem;width:100%;-webkit-appearance:none;appearance:none}
 .pane{display:none}.pane.active{display:block}
+
+/* Result toggle buttons */
+.result-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+.result-btn{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:.06em;text-transform:uppercase;padding:16px;border-radius:8px;border:2px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;text-align:center}
+.result-btn:active{opacity:.8}
+.result-btn.win-active{background:rgba(46,204,113,.15);border-color:var(--win);color:var(--win)}
+.result-btn.loss-active{background:rgba(231,76,60,.15);border-color:var(--loss);color:var(--loss)}
+
+/* Checkbox field */
+.check-field{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;cursor:pointer}
+.check-field input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
+.check-field span{font-size:.88rem;color:var(--label)}
+
+/* Datalist combo */
+.combo-wrap{position:relative}
+.combo-wrap input{width:100%}
+
 @media(min-width:700px){
   .stats-strip{grid-template-columns:repeat(6,1fr)}
   .header h1{font-size:2.6rem}
@@ -133,7 +150,7 @@ tr:hover td{background:var(--surface2)}
     </div>
     <div class="match-cards mob" id="matchCards"><div class="empty">Loading...</div></div>
     <div class="dsk tbl-wrap"><table>
-      <thead><tr><th>Date</th><th>Athlete</th><th>Season</th><th>Event</th><th>Location</th><th>Wt</th><th>Level</th><th>Opponent</th><th>Result</th><th>Score</th><th>Notes</th><th></th></tr></thead>
+      <thead><tr><th>Date</th><th>Athlete</th><th>Season</th><th>Event</th><th>Location</th><th>Wt</th><th>Level</th><th>Opp School</th><th>Result</th><th>Score</th><th>Notes</th><th></th></tr></thead>
       <tbody id="matchesTbody"><tr><td colspan="12" class="empty">Loading...</td></tr></tbody>
     </table></div>
   </div>
@@ -159,11 +176,17 @@ tr:hover td{background:var(--surface2)}
         <div class="field f-full"><label>School / Venue Name</label><input id="loc-name" placeholder="Stowe High School"></div>
         <div class="field"><label>Town</label><input id="loc-town" placeholder="Stowe"></div>
         <div class="field"><label>State</label><input id="loc-state" placeholder="VT"></div>
+        <div class="field f-full">
+          <label class="check-field">
+            <input type="checkbox" id="loc-is-school" checked>
+            <span>This is a school (show as opponent school option)</span>
+          </label>
+        </div>
       </div>
       <div class="form-actions"><button class="btn btn-acc btn-sm" onclick="addLocation()">Add</button><button class="btn btn-ghost btn-sm" onclick="toggleForm('locations')">Cancel</button></div>
     </div>
     <div class="list-items mob" id="locationsMob"></div>
-    <div class="dsk tbl-wrap"><table><thead><tr><th>Name</th><th>Town</th><th>State</th><th></th></tr></thead><tbody id="locationsTbody"><tr><td colspan="4" class="empty">Loading...</td></tr></tbody></table></div>
+    <div class="dsk tbl-wrap"><table><thead><tr><th>Name</th><th>Town</th><th>State</th><th>School</th><th></th></tr></thead><tbody id="locationsTbody"><tr><td colspan="5" class="empty">Loading...</td></tr></tbody></table></div>
   </div></div>
 
   <div id="pane-tournaments" class="pane"><div class="card">
@@ -213,15 +236,26 @@ tr:hover td{background:var(--surface2)}
     <div class="card">
       <h2 style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:1.1rem;margin-bottom:12px">Match Log <span id="rMatchCount" style="color:var(--muted);font-size:.82rem;font-weight:400"></span></h2>
       <div class="match-cards mob" id="reportCards"></div>
-      <div class="dsk tbl-wrap"><table><thead><tr><th>Date</th><th>Athlete</th><th>Season</th><th>Event</th><th>Location</th><th>Wt</th><th>Level</th><th>Opponent</th><th>Result</th><th>Score</th><th>Notes</th></tr></thead><tbody id="reportTbody"><tr><td colspan="11" class="empty">No matches.</td></tr></tbody></table></div>
+      <div class="dsk tbl-wrap"><table><thead><tr><th>Date</th><th>Athlete</th><th>Season</th><th>Event</th><th>Location</th><th>Wt</th><th>Level</th><th>Opp School</th><th>Result</th><th>Score</th><th>Notes</th></tr></thead><tbody id="reportTbody"><tr><td colspan="11" class="empty">No matches.</td></tr></tbody></table></div>
     </div>
   </div>
 </div>
 
+<!-- MATCH MODAL -->
 <div id="matchModal" class="overlay" style="display:none" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title" id="modalTitle">Log a Match</div>
+
+    <!-- Result buttons - big and prominent -->
+    <div style="margin-bottom:18px">
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--label);margin-bottom:8px">Result</div>
+      <div class="result-btns">
+        <button class="result-btn win-active" id="btn-win" onclick="setResult('Win')">Win</button>
+        <button class="result-btn" id="btn-loss" onclick="setResult('Loss')">Loss</button>
+      </div>
+    </div>
+
     <div class="form-grid">
       <div class="field"><label>Date</label><input type="date" id="m-date"></div>
       <div class="field"><label>Season</label><select id="m-season">
@@ -236,26 +270,82 @@ tr:hover td{background:var(--surface2)}
         <option>2029-30</option><option>2029-30 Off-Season</option>
         <option>2030-31</option><option>2030-31 Off-Season</option>
       </select></div>
-      <div class="field"><label>Athlete</label><select id="m-athlete"><option value="">Select...</option><option value="unknown">Unknown</option></select></div>
-      <div class="field"><label>Event Type</label><select id="m-event"><option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option></select></div>
-      <div class="field"><label>Location</label><select id="m-location"><option value="">Select...</option><option value="unknown">Unknown</option></select></div>
-      <div class="field"><label>Tournament</label><select id="m-tournament"><option value="">None</option><option value="unknown">Unknown</option></select></div>
-      <div class="field"><label>Weight Class</label><select id="m-weight"><option>106</option><option>113</option><option>120</option><option>126</option><option>132</option><option>138</option><option>145</option><option selected>152</option><option>160</option><option>170</option><option>182</option><option>195</option><option>220</option><option>285</option></select></div>
-      <div class="field"><label>Level</label><select id="m-level"><option>Varsity</option><option>JV</option></select></div>
-      <div class="field"><label>Result</label><select id="m-result" onchange="toggleResultType()"><option>Win</option><option>Loss</option></select></div>
-      <div class="field" id="winWrap"><label>Win By</label><select id="m-wintype"><option>Decision</option><option>Major Decision</option><option>Technical Fall</option><option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option></select></div>
-      <div class="field" id="lossWrap" style="display:none"><label>Loss By</label><select id="m-losstype"><option>Decision</option><option>Major Decision</option><option>Technical Fall</option><option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option></select></div>
+
+      <!-- Tournament dropdown - first so it can drive other fields -->
+      <div class="field f-full"><label>Tournament / Event</label>
+        <select id="m-tournament" onchange="onTournamentChange()">
+          <option value="">Dual Meet</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </div>
+
+      <!-- Event type - auto-populated from tournament selection -->
+      <div class="field"><label>Event Type</label>
+        <select id="m-event">
+          <option>Dual Meet</option><option>Tournament</option><option>Invitational</option><option>Scrimmage</option><option>Unknown</option>
+        </select>
+      </div>
+
+      <!-- Location - auto-populated from tournament selection -->
+      <div class="field"><label>Location</label>
+        <select id="m-location">
+          <option value="">Unknown</option>
+        </select>
+      </div>
+
+      <div class="field"><label>Athlete</label>
+        <select id="m-athlete">
+          <option value="">Unknown</option>
+        </select>
+      </div>
+
+      <div class="field"><label>Weight Class</label>
+        <select id="m-weight">
+          <option>106</option><option>113</option><option>120</option><option>126</option><option>132</option>
+          <option>138</option><option>145</option><option selected>152</option><option>160</option><option>170</option>
+          <option>182</option><option>195</option><option>220</option><option>285</option>
+        </select>
+      </div>
+
+      <div class="field"><label>Level</label>
+        <select id="m-level"><option>Varsity</option><option>JV</option></select>
+      </div>
+
+      <div class="field" id="winWrap"><label>Win By</label>
+        <select id="m-wintype">
+          <option>Decision</option><option>Major Decision</option><option>Technical Fall</option>
+          <option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option>
+        </select>
+      </div>
+      <div class="field" id="lossWrap" style="display:none"><label>Loss By</label>
+        <select id="m-losstype">
+          <option>Decision</option><option>Major Decision</option><option>Technical Fall</option>
+          <option>Fall</option><option>Forfeit</option><option>Default</option><option>Disqualification</option>
+        </select>
+      </div>
+
       <div class="field"><label>Score (e.g. 8-3)</label><input id="m-score" placeholder="8-3"></div>
-      <div class="field"><label>Opponent Name</label><input id="m-opponent"></div>
-      <div class="field f-full"><label>Opponent School</label><input id="m-oppschool"></div>
-      <div class="field f-full"><label>Notes</label><textarea id="m-notes" placeholder="Takedowns, reversals, anything notable..."></textarea></div>
+
+      <!-- Opponent school - text with datalist suggestions from school locations -->
+      <div class="field f-full"><label>Opponent School</label>
+        <div class="combo-wrap">
+          <input id="m-oppschool" list="school-list" placeholder="Type or select a school..." autocomplete="off">
+          <datalist id="school-list"></datalist>
+        </div>
+      </div>
+
+      <div class="field f-full"><label>Notes</label>
+        <textarea id="m-notes" placeholder="Takedowns, reversals, anything notable..."></textarea>
+      </div>
     </div>
+
     <div class="form-actions">
       <button class="btn btn-acc" style="flex:1" onclick="saveMatch()">Save Match</button>
       <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
     </div>
   </div>
 </div>
+
 <div id="toast" class="toast" style="display:none"></div>
 
 <script>
@@ -264,6 +354,7 @@ const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZ
 const sb=supabase.createClient(SB_URL,SB_KEY);
 var D={matches:[],athletes:[],locations:[],tournaments:[]};
 var editId=null;
+var currentResult='Win';
 
 window.onload=async function(){
   document.getElementById('m-date').value=new Date().toISOString().split('T')[0];
@@ -308,9 +399,16 @@ function setStats(ms){
   [s.total,s.wins,s.losses,s.pct+'%',s.pins,s.tech].forEach(function(v,i){var el=document.getElementById(ids[i]);if(el)el.textContent=v;});
 }
 
-function aN(id){var a=D.athletes.find(function(x){return x.id===id;});return a?a.name:(id==='unknown'?'Unknown':'');}
-function lN(id){var a=D.locations.find(function(x){return x.id===id;});return a?a.name:(id==='unknown'?'Unknown':'');}
-function tN(id){var a=D.tournaments.find(function(x){return x.id===id;});return a?a.name:(id==='unknown'?'Unknown':'');}
+function aN(id){var a=D.athletes.find(function(x){return x.id===id;});return a?a.name:(id?'Unknown':'');}
+function lN(id){var a=D.locations.find(function(x){return x.id===id;});return a?a.name:(id?'Unknown':'');}
+function tN(id){var a=D.tournaments.find(function(x){return x.id===id;});return a?a.name:(id?'Unknown':'');}
+
+// Get most recently added tournament season
+function latestTournamentSeason(){
+  if(!D.tournaments.length) return '2024-25';
+  var sorted=D.tournaments.slice().sort(function(a,b){return(b.created_at||'').localeCompare(a.created_at||'');});
+  return sorted[0].season||'2024-25';
+}
 
 function mcHTML(m,acts){
   var win=m.result==='Win';
@@ -318,7 +416,7 @@ function mcHTML(m,acts){
   var ah=acts?('<div class="mc-acts"><button class="btn btn-ghost btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="deleteMatch(\''+m.id+'\')">Del</button></div>'):'';
   return '<div class="match-card"><div class="mc-top"><div>'+
     '<div class="mc-result '+(win?'win':'loss')+'">'+(win?'W':'L')+' \u2014 '+(win?(m.win_type||''):(m.loss_type||''))+'</div>'+
-    '<div class="mc-meta">'+(m.date||'')+' &bull; '+(m.opponent||'Unknown')+(m.opponent_school?' ('+m.opponent_school+')':'')+'</div>'+
+    '<div class="mc-meta">'+(m.date||'')+' &bull; '+(m.opponent_school||'Unknown school')+'</div>'+
     '</div>'+ah+'</div>'+
     '<div class="chips">'+
     '<span class="chip '+(m.level==='Varsity'?'c-v':'c-jv')+'">'+(m.level||'')+'</span>'+
@@ -337,7 +435,7 @@ function renderMatches(){
   document.getElementById('matchCards').innerHTML=s.length?s.map(function(m){return mcHTML(m,true);}).join(''):'<div class="empty">No matches yet. Add your first one!</div>';
   var tb=document.getElementById('matchesTbody');
   if(!s.length){tb.innerHTML='<tr><td colspan="12" class="empty">No matches yet.</td></tr>';return;}
-  tb.innerHTML=s.map(function(m){return'<tr><td>'+(m.date||'')+'</td><td>'+aN(m.athlete_id)+'</td><td>'+(m.season||'')+'</td><td>'+(m.event_type||'')+(tN(m.tournament_id)?' / '+tN(m.tournament_id):'')+'</td><td>'+lN(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td><td><span class="bdg '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td><td>'+(m.opponent||'')+'</td><td><span class="bdg '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td><td>'+(m.score||'')+'</td><td style="font-size:.78rem;color:var(--muted);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(m.notes||'')+'</td><td style="display:flex;gap:5px"><button class="btn btn-ghost btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="deleteMatch(\''+m.id+'\')">Del</button></td></tr>';}).join('');
+  tb.innerHTML=s.map(function(m){return'<tr><td>'+(m.date||'')+'</td><td>'+aN(m.athlete_id)+'</td><td>'+(m.season||'')+'</td><td>'+(m.event_type||'')+(tN(m.tournament_id)?' / '+tN(m.tournament_id):'')+'</td><td>'+lN(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td><td><span class="bdg '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td><td>'+(m.opponent_school||'')+'</td><td><span class="bdg '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td><td>'+(m.score||'')+'</td><td style="font-size:.78rem;color:var(--muted);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(m.notes||'')+'</td><td style="display:flex;gap:5px"><button class="btn btn-ghost btn-sm" onclick="editMatch(\''+m.id+'\')">Edit</button><button class="btn btn-del btn-sm" onclick="deleteMatch(\''+m.id+'\')">Del</button></td></tr>';}).join('');
 }
 
 function mobList(id,items,nFn,sFn,dFn){
@@ -352,8 +450,8 @@ function renderAthletes(){
 }
 
 function renderLocations(){
-  mobList('locationsMob',D.locations,function(i){return i.name;},function(i){return[i.town,i.state].filter(Boolean).join(', ');},'deleteLocation');
-  document.getElementById('locationsTbody').innerHTML=D.locations.length?D.locations.map(function(l){return'<tr><td>'+(l.name||'')+'</td><td>'+(l.town||'')+'</td><td>'+(l.state||'')+'</td><td><button class="btn btn-del btn-sm" onclick="deleteLocation(\''+l.id+'\')">Remove</button></td></tr>';}).join(''):'<tr><td colspan="4" class="empty">No locations yet.</td></tr>';
+  mobList('locationsMob',D.locations,function(i){return i.name;},function(i){return[i.town,i.state].filter(Boolean).join(', ')+(i.is_school?' \u00b7 School':'');},'deleteLocation');
+  document.getElementById('locationsTbody').innerHTML=D.locations.length?D.locations.map(function(l){return'<tr><td>'+(l.name||'')+'</td><td>'+(l.town||'')+'</td><td>'+(l.state||'')+'</td><td>'+(l.is_school?'Yes':'')+'</td><td><button class="btn btn-del btn-sm" onclick="deleteLocation(\''+l.id+'\')">Remove</button></td></tr>';}).join(''):'<tr><td colspan="5" class="empty">No locations yet.</td></tr>';
 }
 
 function renderTournaments(){
@@ -362,25 +460,35 @@ function renderTournaments(){
 }
 
 function fillModalDrops(){
-  function fill(id,items,lbl){
-    var el=document.getElementById(id);if(!el)return;
-    var v=el.value;
-    el.innerHTML='<option value="">'+lbl+'</option><option value="unknown">Unknown</option>'+
-      items.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
-    el.value=v;
-  }
-  fill('m-athlete',D.athletes,'Select...');
-  fill('m-location',D.locations,'Select...');
-  var t=document.getElementById('m-tournament'),v=t.value;
-  t.innerHTML='<option value="">None</option><option value="unknown">Unknown</option>'+
+  // Athletes
+  var a=document.getElementById('m-athlete'),av=a.value;
+  a.innerHTML='<option value="">Unknown</option>'+D.athletes.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
+  a.value=av;
+
+  // Locations
+  var l=document.getElementById('m-location'),lv=l.value;
+  l.innerHTML='<option value="">Unknown</option>'+D.locations.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
+  l.value=lv;
+
+  // Tournaments - first option is "Dual Meet" (no tournament)
+  var t=document.getElementById('m-tournament'),tv=t.value;
+  t.innerHTML='<option value="">Dual Meet</option><option value="unknown">Unknown</option>'+
     D.tournaments.map(function(i){return'<option value="'+i.id+'">'+i.name+'</option>';}).join('');
-  t.value=v;
+  t.value=tv;
+
+  // Tournament location dropdown in add form
   var tl=document.getElementById('trn-loc');
   if(tl){
     var tlv=tl.value;
     tl.innerHTML='<option value="">Select location...</option><option value="Unknown">Unknown</option>'+
       D.locations.map(function(i){return'<option value="'+i.name+'">'+i.name+'</option>';}).join('');
     tl.value=tlv;
+  }
+
+  // School datalist for opponent school
+  var dl=document.getElementById('school-list');
+  if(dl){
+    dl.innerHTML=D.locations.filter(function(i){return i.is_school;}).map(function(i){return'<option value="'+i.name+'"></option>';}).join('');
   }
 }
 
@@ -390,6 +498,43 @@ function fillReportFilters(){
   var seasons=[...new Set(D.matches.map(function(m){return m.season;}).filter(Boolean))].sort();
   var s=document.getElementById('r-season'),sv=s.value;
   s.innerHTML='<option value="">All Seasons</option>'+seasons.map(function(x){return'<option>'+x+'</option>';}).join('');s.value=sv;
+}
+
+// When tournament is selected, auto-populate location, event type, and season
+function onTournamentChange(){
+  var tid=document.getElementById('m-tournament').value;
+  if(!tid){
+    // Dual meet selected
+    document.getElementById('m-event').value='Dual Meet';
+    return;
+  }
+  if(tid==='unknown'){
+    document.getElementById('m-event').value='Unknown';
+    return;
+  }
+  var trn=D.tournaments.find(function(t){return t.id===tid;});
+  if(!trn) return;
+
+  // Auto-populate event type
+  document.getElementById('m-event').value='Tournament';
+
+  // Auto-populate season
+  if(trn.season) document.getElementById('m-season').value=trn.season;
+
+  // Auto-populate location by matching tournament location name to locations list
+  if(trn.location){
+    var loc=D.locations.find(function(l){return l.name===trn.location;});
+    if(loc) document.getElementById('m-location').value=loc.id;
+  }
+}
+
+// Result toggle
+function setResult(r){
+  currentResult=r;
+  document.getElementById('btn-win').className='result-btn'+(r==='Win'?' win-active':'');
+  document.getElementById('btn-loss').className='result-btn'+(r==='Loss'?' loss-active':'');
+  document.getElementById('winWrap').style.display=r==='Win'?'':'none';
+  document.getElementById('lossWrap').style.display=r==='Loss'?'':'none';
 }
 
 function renderReports(){
@@ -406,41 +551,70 @@ function renderReports(){
   document.getElementById('reportCards').innerHTML=sorted.length?sorted.map(function(m){return mcHTML(m,false);}).join(''):'<div class="empty">No matches match the filters.</div>';
   var tb=document.getElementById('reportTbody');
   if(!sorted.length){tb.innerHTML='<tr><td colspan="11" class="empty">No matches match the filters.</td></tr>';return;}
-  tb.innerHTML=sorted.map(function(m){return'<tr><td>'+(m.date||'')+'</td><td>'+aN(m.athlete_id)+'</td><td>'+(m.season||'')+'</td><td>'+(m.event_type||'')+(tN(m.tournament_id)?' / '+tN(m.tournament_id):'')+'</td><td>'+lN(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td><td><span class="bdg '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td><td>'+(m.opponent||'')+'</td><td><span class="bdg '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td><td>'+(m.score||'')+'</td><td style="font-size:.78rem;color:var(--muted)">'+(m.notes||'')+'</td></tr>';}).join('');
+  tb.innerHTML=sorted.map(function(m){return'<tr><td>'+(m.date||'')+'</td><td>'+aN(m.athlete_id)+'</td><td>'+(m.season||'')+'</td><td>'+(m.event_type||'')+(tN(m.tournament_id)?' / '+tN(m.tournament_id):'')+'</td><td>'+lN(m.location_id)+'</td><td><strong>'+(m.weight_class||'')+'</strong></td><td><span class="bdg '+(m.level==='Varsity'?'b-v':'b-jv')+'">'+(m.level||'')+'</span></td><td>'+(m.opponent_school||'')+'</td><td><span class="bdg '+(m.result==='Win'?'b-win':'b-loss')+'">'+(m.result==='Win'?'W - '+(m.win_type||''):'L - '+(m.loss_type||''))+'</span></td><td>'+(m.score||'')+'</td><td style="font-size:.78rem;color:var(--muted)">'+(m.notes||'')+'</td></tr>';}).join('');
 }
 
 function openMatchModal(match){
   editId=match?match.id:null;
   document.getElementById('modalTitle').textContent=match?'Edit Match':'Log a Match';
   fillModalDrops();
-  function s(id,v){document.getElementById(id).value=v||'';}
+
   if(match){
-    s('m-date',match.date);s('m-season',match.season||'2024-25');s('m-athlete',match.athlete_id||'');
-    s('m-event',match.event_type||'Dual Meet');s('m-location',match.location_id||'');s('m-tournament',match.tournament_id||'');
-    s('m-weight',match.weight_class||'152');s('m-level',match.level||'Varsity');s('m-result',match.result||'Win');
-    s('m-wintype',match.win_type||'Decision');s('m-losstype',match.loss_type||'Decision');
-    s('m-score',match.score);s('m-opponent',match.opponent);s('m-oppschool',match.opponent_school);s('m-notes',match.notes);
+    document.getElementById('m-date').value=match.date||'';
+    document.getElementById('m-season').value=match.season||'2024-25';
+    document.getElementById('m-athlete').value=match.athlete_id||'';
+    document.getElementById('m-tournament').value=match.tournament_id||'';
+    document.getElementById('m-event').value=match.event_type||'Dual Meet';
+    document.getElementById('m-location').value=match.location_id||'';
+    document.getElementById('m-weight').value=match.weight_class||'152';
+    document.getElementById('m-level').value=match.level||'Varsity';
+    document.getElementById('m-wintype').value=match.win_type||'Decision';
+    document.getElementById('m-losstype').value=match.loss_type||'Decision';
+    document.getElementById('m-score').value=match.score||'';
+    document.getElementById('m-oppschool').value=match.opponent_school||'';
+    document.getElementById('m-notes').value=match.notes||'';
+    setResult(match.result||'Win');
   }else{
-    s('m-date',new Date().toISOString().split('T')[0]);s('m-season','2024-25');
-    s('m-athlete',D.athletes.length===1?D.athletes[0].id:'');
-    s('m-event','Dual Meet');s('m-weight','152');s('m-level','Varsity');s('m-result','Win');s('m-wintype','Decision');
-    ['m-location','m-tournament','m-score','m-opponent','m-oppschool','m-notes'].forEach(function(id){s(id,'');});
+    document.getElementById('m-date').value=new Date().toISOString().split('T')[0];
+    document.getElementById('m-season').value=latestTournamentSeason();
+    document.getElementById('m-athlete').value=D.athletes.length===1?D.athletes[0].id:'';
+    document.getElementById('m-tournament').value='';
+    document.getElementById('m-event').value='Dual Meet';
+    document.getElementById('m-location').value='';
+    document.getElementById('m-weight').value='152';
+    document.getElementById('m-level').value='Varsity';
+    document.getElementById('m-wintype').value='Decision';
+    document.getElementById('m-score').value='';
+    document.getElementById('m-oppschool').value='';
+    document.getElementById('m-notes').value='';
+    setResult('Win');
   }
-  toggleResultType();
+
   document.getElementById('matchModal').style.display='flex';
   document.body.style.overflow='hidden';
 }
 
 function editMatch(id){var m=D.matches.find(function(m){return m.id===id;});if(m)openMatchModal(m);}
 function closeModal(){document.getElementById('matchModal').style.display='none';document.body.style.overflow='';}
-function toggleResultType(){var win=document.getElementById('m-result').value==='Win';document.getElementById('winWrap').style.display=win?'':'none';document.getElementById('lossWrap').style.display=win?'none':'';}
 
 async function saveMatch(){
   function g(id){return document.getElementById(id).value||null;}
-  var m={date:g('m-date'),season:g('m-season'),athlete_id:g('m-athlete'),event_type:g('m-event'),
-    location_id:g('m-location'),tournament_id:g('m-tournament'),weight_class:g('m-weight'),
-    level:g('m-level'),result:g('m-result'),win_type:g('m-wintype'),loss_type:g('m-losstype'),
-    score:g('m-score'),opponent:g('m-opponent'),opponent_school:g('m-oppschool'),notes:g('m-notes')};
+  var m={
+    date:g('m-date'),
+    season:g('m-season'),
+    athlete_id:g('m-athlete'),
+    event_type:g('m-event')||'Dual Meet',
+    location_id:g('m-location'),
+    tournament_id:g('m-tournament'),
+    weight_class:g('m-weight'),
+    level:g('m-level'),
+    result:currentResult,
+    win_type:currentResult==='Win'?g('m-wintype'):null,
+    loss_type:currentResult==='Loss'?g('m-losstype'):null,
+    score:g('m-score'),
+    opponent_school:g('m-oppschool'),
+    notes:g('m-notes')
+  };
   try{
     var res=editId?await sb.from('matches').update(m).eq('id',editId):await sb.from('matches').insert(m);
     if(res.error)throw res.error;
@@ -460,9 +634,10 @@ async function deleteAthlete(id){if(!confirm('Remove?'))return;var r=await sb.fr
 
 async function addLocation(){
   var n=document.getElementById('loc-name').value.trim();if(!n){toast('Name is required.',true);return;}
-  var r=await sb.from('locations').insert({name:n,town:document.getElementById('loc-town').value||null,state:document.getElementById('loc-state').value||null});
+  var isSchool=document.getElementById('loc-is-school').checked;
+  var r=await sb.from('locations').insert({name:n,town:document.getElementById('loc-town').value||null,state:document.getElementById('loc-state').value||null,is_school:isSchool});
   if(r.error){toast(r.error.message,true);return;}
-  toast('Added.');['loc-name','loc-town','loc-state'].forEach(function(id){document.getElementById(id).value='';});toggleForm('locations');await loadAll();
+  toast('Added.');['loc-name','loc-town','loc-state'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('loc-is-school').checked=true;toggleForm('locations');await loadAll();
 }
 async function deleteLocation(id){if(!confirm('Remove?'))return;var r=await sb.from('locations').delete().eq('id',id);if(r.error){toast(r.error.message,true);return;}toast('Removed.');await loadAll();}
 
